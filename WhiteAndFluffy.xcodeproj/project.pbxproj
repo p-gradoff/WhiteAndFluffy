@@ -22,6 +22,7 @@
 		372F67902C96D1F5001786CE /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372F678F2C96D1F5001786CE /* FavoriteView.swift */; };
 		372F67932C96D2B3001786CE /* FavoritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372F67922C96D2B3001786CE /* FavoritePresenter.swift */; };
 		372F67962C96DF8A001786CE /* UnsplashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372F67952C96DF8A001786CE /* UnsplashService.swift */; };
+		375709C42C96E7C4002E5F6B /* UnsplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375709C32C96E7C4002E5F6B /* UnsplashViewController.swift */; };
 		901B0F00C9493721FE590E3B /* Pods_WhiteAndFluffy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EDE8560DBFC6E82A58A58A /* Pods_WhiteAndFluffy.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		372F678F2C96D1F5001786CE /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
 		372F67922C96D2B3001786CE /* FavoritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePresenter.swift; sourceTree = "<group>"; };
 		372F67952C96DF8A001786CE /* UnsplashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashService.swift; sourceTree = "<group>"; };
+		375709C32C96E7C4002E5F6B /* UnsplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashViewController.swift; sourceTree = "<group>"; };
 		4CDB25494AAA6FCD2F5DAA9F /* Pods-WhiteAndFluffy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhiteAndFluffy.release.xcconfig"; path = "Target Support Files/Pods-WhiteAndFluffy/Pods-WhiteAndFluffy.release.xcconfig"; sourceTree = "<group>"; };
 		82DB31CF568698A875627267 /* Pods-WhiteAndFluffy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhiteAndFluffy.debug.xcconfig"; path = "Target Support Files/Pods-WhiteAndFluffy/Pods-WhiteAndFluffy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +109,7 @@
 			children = (
 				372F67762C96C76F001786CE /* Feed */,
 				372F67772C96C775001786CE /* Favorite */,
+				375709C32C96E7C4002E5F6B /* UnsplashViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				372F67902C96D1F5001786CE /* FavoriteView.swift in Sources */,
 				372F67932C96D2B3001786CE /* FavoritePresenter.swift in Sources */,
 				372F677B2C96C887001786CE /* FeedViewController.swift in Sources */,
+				375709C42C96E7C4002E5F6B /* UnsplashViewController.swift in Sources */,
 				372F677D2C96C8B6001786CE /* FavoriteViewController.swift in Sources */,
 				372F67832C96CAD4001786CE /* FeedModel.swift in Sources */,
 				372F67642C95B927001786CE /* SceneDelegate.swift in Sources */,

@@ -6,20 +6,22 @@
 //
 
 import UIKit
+import UnsplashPhotoPicker
 
 final class Builder {
     // MARK: мб поменять название на конфигурацию всего проекта
     static func buildTabBar() -> UITabBarController {
-        let feedViewController = buildFeedViewController()
-        feedViewController.tabBarItem = UITabBarItem(title: "Gallery", image: UIImage(systemName: "photo.fill"), tag: 0)
+        let unsplashViewController = UINavigationController(rootViewController: UnsplashViewController())
+        unsplashViewController.tabBarItem = UITabBarItem(title: "Unsplash", image: UIImage(systemName: "photo.fill"), tag: 0)
         
         let favoriteViewController = buildFavoriteViewController()
         favoriteViewController.tabBarItem = UITabBarItem(title: "Favorite", image: UIImage(systemName: "bookmark.fill"), tag: 1)
         
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [feedViewController, favoriteViewController]
+        tabBarController.viewControllers = [unsplashViewController, favoriteViewController]
         return tabBarController
         
+        // MARK: возможно удалить за ненадобностью
         func buildFeedViewController() -> UINavigationController {
             let model = FeedModel()
             let presenter = FeedPresenter(dependencies: .init(model: model))
@@ -36,6 +38,20 @@ final class Builder {
             let controller = UINavigationController(rootViewController: favoriteVC)
             
             return controller
+        }
+        
+        func buildUnsplashPhotoPicker() -> UINavigationController {
+            class MyClass {
+                
+            }
+            // MARK: защита ключей
+            let config = UnsplashPhotoPickerConfiguration(
+                accessKey: "baCvunmA2XzfsRavdVIzhghHURCbr4V073wovijPK-I",
+                secretKey: "NJToujRMGpku0kZEoEVnSY5LHBHvljwcN9ykix_0Yv0"
+            )
+            let photoPicker: UnsplashPhotoPicker = UnsplashPhotoPicker(configuration: config)
+            
+            return photoPicker
         }
     }
     
