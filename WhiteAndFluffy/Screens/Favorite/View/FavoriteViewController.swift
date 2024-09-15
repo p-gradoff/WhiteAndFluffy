@@ -29,16 +29,15 @@ final class FavoriteViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemMint
-    }
-    
     override func loadView() {
         super.loadView()
         presenter.loadPresenter(with: favouriteView, controller: self)
     }
-
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .systemMint
+    }
 }
 
 extension FavoriteViewController: FavoriteViewControllerProtocol {
