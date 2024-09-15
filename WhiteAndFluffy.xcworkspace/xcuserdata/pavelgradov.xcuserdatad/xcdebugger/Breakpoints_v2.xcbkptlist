@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "48F8D035-E3E3-4DDF-84F9-97615899A182"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8061E95C-E8BA-42BC-B881-B2BF820A5007"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WhiteAndFluffy/Screens/Information/Presenter/InfoPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "setupInformationData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "80D0FF60-E7B8-4764-90CD-FC43D88DB1A8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WhiteAndFluffy/NetworkService/NetworkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "setupRequest(id:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "59A0299C-33EB-4355-B4B9-B44E0D613F97"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WhiteAndFluffy/NetworkService/NetworkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "getRequest(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "59A0299C-33EB-4355-B4B9-B44E0D613F97 - b90b1b007dc142f3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WhiteAndFluffy.NetworkService.getRequest(completion: (Swift.Result&lt;WhiteAndFluffy.InfoModel, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "WhiteAndFluffy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavelgradov/Desktop/iOS_Developer/Projects/WhiteAndFluffy/WhiteAndFluffy/NetworkService/NetworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24">
+               </Location>
+               <Location
+                  uuid = "59A0299C-33EB-4355-B4B9-B44E0D613F97 - 9b3dcb8a4ecb0147"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Swift.Optional&lt;Foundation.Data&gt;, Alamofire.AFError&gt;) -&gt; () in WhiteAndFluffy.NetworkService.getRequest(completion: (Swift.Result&lt;WhiteAndFluffy.InfoModel, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "WhiteAndFluffy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavelgradov/Desktop/iOS_Developer/Projects/WhiteAndFluffy/WhiteAndFluffy/NetworkService/NetworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
