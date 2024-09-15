@@ -11,7 +11,7 @@ import UnsplashPhotoPicker
 final class Builder {
     // MARK: мб поменять название на конфигурацию всего проекта
     static func buildTabBar() -> UITabBarController {
-        let unsplashViewController = UINavigationController(rootViewController: UnsplashViewController())
+        let unsplashViewController = buildUnsplashViewController()
         unsplashViewController.tabBarItem = UITabBarItem(title: "Unsplash", image: UIImage(systemName: "photo.fill"), tag: 0)
         
         let favoriteViewController = buildFavoriteViewController()
@@ -20,16 +20,6 @@ final class Builder {
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [unsplashViewController, favoriteViewController]
         return tabBarController
-        
-        // MARK: возможно удалить за ненадобностью
-        func buildFeedViewController() -> UINavigationController {
-            let model = FeedModel()
-            let presenter = FeedPresenter(dependencies: .init(model: model))
-            let feedVC = FeedViewController(dependencies: .init(presenter: presenter))
-            let controller = UINavigationController(rootViewController: feedVC)
-            
-            return controller
-        }
         
         func buildFavoriteViewController() -> UINavigationController {
             let model = FavoriteModel()
@@ -40,39 +30,20 @@ final class Builder {
             return controller
         }
         
-        func buildUnsplashPhotoPicker() -> UINavigationController {
-            class MyClass {
-                
-            }
-            // MARK: защита ключей
-            let config = UnsplashPhotoPickerConfiguration(
-                accessKey: "baCvunmA2XzfsRavdVIzhghHURCbr4V073wovijPK-I",
-                secretKey: "NJToujRMGpku0kZEoEVnSY5LHBHvljwcN9ykix_0Yv0"
-            )
-            let photoPicker: UnsplashPhotoPicker = UnsplashPhotoPicker(configuration: config)
+        func buildUnsplashViewController() -> UINavigationController {
+            let presenter = UnsplashPresenter()
+            let unsplashVC = UnsplashViewController(dependencies: .init(presenter: presenter))
+            let controller = UINavigationController(rootViewController: unsplashVC)
             
-            return photoPicker
+            return controller
         }
     }
     
-/*
-    static func buildFeedViewController() -> UINavigationController {
-        let model = FeedModel()
-        let presenter = FeedPresenter(dependencies: .init(model: model))
-        let feedVC = FeedViewController(dependencies: .init(presenter: presenter))
-        let controller = UINavigationController(rootViewController: feedVC)
+    static func buildInformationViewController(photo: UnsplashPhoto) -> UIViewController {
+        let model = InfoModel(photo: photo)
+        let presenter = InfoPresenter(model: model)
+        let controller = InfoViewController(dependencies: .init(presenter: presenter))
         
         return controller
     }
-    
-    static func buildFavoriteViewController() -> UINavigationController {
-        let model = FavoriteModel()
-        let presenter = FavoritePresenter(dependencies: .init(model: model))
-        let favoriteVC = FavoriteViewController(dependencies: .init(presenter: presenter))
-        let controller = UINavigationController(rootViewController: favoriteVC)
-        
-        return controller
-    }
-*/
-    
 }

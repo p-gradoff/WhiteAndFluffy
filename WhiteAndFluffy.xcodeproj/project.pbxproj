@@ -23,6 +23,11 @@
 		372F67932C96D2B3001786CE /* FavoritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372F67922C96D2B3001786CE /* FavoritePresenter.swift */; };
 		372F67962C96DF8A001786CE /* UnsplashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372F67952C96DF8A001786CE /* UnsplashService.swift */; };
 		375709C42C96E7C4002E5F6B /* UnsplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375709C32C96E7C4002E5F6B /* UnsplashViewController.swift */; };
+		375709CA2C96FCDA002E5F6B /* UnsplashPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375709C92C96FCDA002E5F6B /* UnsplashPresenter.swift */; };
+		375709D02C96FED8002E5F6B /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375709CF2C96FED8002E5F6B /* InfoViewController.swift */; };
+		375709D32C97016E002E5F6B /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375709D22C97016E002E5F6B /* InfoView.swift */; };
+		375709D52C97017C002E5F6B /* InfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375709D42C97017C002E5F6B /* InfoPresenter.swift */; };
+		375709D82C9701EB002E5F6B /* InfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375709D72C9701EB002E5F6B /* InfoModel.swift */; };
 		901B0F00C9493721FE590E3B /* Pods_WhiteAndFluffy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EDE8560DBFC6E82A58A58A /* Pods_WhiteAndFluffy.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +51,11 @@
 		372F67922C96D2B3001786CE /* FavoritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePresenter.swift; sourceTree = "<group>"; };
 		372F67952C96DF8A001786CE /* UnsplashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashService.swift; sourceTree = "<group>"; };
 		375709C32C96E7C4002E5F6B /* UnsplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashViewController.swift; sourceTree = "<group>"; };
+		375709C92C96FCDA002E5F6B /* UnsplashPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashPresenter.swift; sourceTree = "<group>"; };
+		375709CF2C96FED8002E5F6B /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		375709D22C97016E002E5F6B /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		375709D42C97017C002E5F6B /* InfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPresenter.swift; sourceTree = "<group>"; };
+		375709D72C9701EB002E5F6B /* InfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoModel.swift; sourceTree = "<group>"; };
 		4CDB25494AAA6FCD2F5DAA9F /* Pods-WhiteAndFluffy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhiteAndFluffy.release.xcconfig"; path = "Target Support Files/Pods-WhiteAndFluffy/Pods-WhiteAndFluffy.release.xcconfig"; sourceTree = "<group>"; };
 		82DB31CF568698A875627267 /* Pods-WhiteAndFluffy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhiteAndFluffy.debug.xcconfig"; path = "Target Support Files/Pods-WhiteAndFluffy/Pods-WhiteAndFluffy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,9 +117,10 @@
 		372F67752C96C72A001786CE /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				375709CD2C96FE78002E5F6B /* Information */,
+				375709C52C96F9B3002E5F6B /* Unsplash */,
 				372F67762C96C76F001786CE /* Feed */,
 				372F67772C96C775001786CE /* Favorite */,
-				375709C32C96E7C4002E5F6B /* UnsplashViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -198,6 +209,66 @@
 				372F67952C96DF8A001786CE /* UnsplashService.swift */,
 			);
 			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		375709C52C96F9B3002E5F6B /* Unsplash */ = {
+			isa = PBXGroup;
+			children = (
+				375709C72C96F9C3002E5F6B /* View */,
+				375709C62C96F9BD002E5F6B /* Presenter */,
+			);
+			path = Unsplash;
+			sourceTree = "<group>";
+		};
+		375709C62C96F9BD002E5F6B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				375709C92C96FCDA002E5F6B /* UnsplashPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		375709C72C96F9C3002E5F6B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				375709C32C96E7C4002E5F6B /* UnsplashViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		375709CD2C96FE78002E5F6B /* Information */ = {
+			isa = PBXGroup;
+			children = (
+				375709D62C9701DD002E5F6B /* Model */,
+				375709CE2C96FEBB002E5F6B /* View */,
+				375709D12C970157002E5F6B /* Presenter */,
+			);
+			path = Information;
+			sourceTree = "<group>";
+		};
+		375709CE2C96FEBB002E5F6B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				375709CF2C96FED8002E5F6B /* InfoViewController.swift */,
+				375709D22C97016E002E5F6B /* InfoView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		375709D12C970157002E5F6B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				375709D42C97017C002E5F6B /* InfoPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		375709D62C9701DD002E5F6B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				375709D72C9701EB002E5F6B /* InfoModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		53E89E03219ACFDA5EC16722 /* Pods */ = {
@@ -327,15 +398,20 @@
 				372F678E2C96D1BB001786CE /* FavoriteModel.swift in Sources */,
 				372F67622C95B927001786CE /* AppDelegate.swift in Sources */,
 				372F678A2C96CE64001786CE /* UIView.ext.swift in Sources */,
+				375709D32C97016E002E5F6B /* InfoView.swift in Sources */,
 				372F67852C96CAF9001786CE /* FeedPresenter.swift in Sources */,
 				372F67902C96D1F5001786CE /* FavoriteView.swift in Sources */,
 				372F67932C96D2B3001786CE /* FavoritePresenter.swift in Sources */,
 				372F677B2C96C887001786CE /* FeedViewController.swift in Sources */,
 				375709C42C96E7C4002E5F6B /* UnsplashViewController.swift in Sources */,
+				375709D52C97017C002E5F6B /* InfoPresenter.swift in Sources */,
 				372F677D2C96C8B6001786CE /* FavoriteViewController.swift in Sources */,
 				372F67832C96CAD4001786CE /* FeedModel.swift in Sources */,
 				372F67642C95B927001786CE /* SceneDelegate.swift in Sources */,
+				375709CA2C96FCDA002E5F6B /* UnsplashPresenter.swift in Sources */,
 				372F677F2C96C928001786CE /* Builder.swift in Sources */,
+				375709D82C9701EB002E5F6B /* InfoModel.swift in Sources */,
+				375709D02C96FED8002E5F6B /* InfoViewController.swift in Sources */,
 				372F67962C96DF8A001786CE /* UnsplashService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
