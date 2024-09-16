@@ -23,16 +23,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A29F0C90-1D30-4B54-B261-9859710228AF"
-            shouldBeEnabled = "No"
+            uuid = "7784868F-78EB-41BB-9338-1078C6700BF6"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WhiteAndFluffy/Screens/Favorite/Presenter/FavoritePresenter.swift"
+            filePath = "WhiteAndFluffy/Builder.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "transmitInformation(_:)"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "tabBarController(_:didSelect:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

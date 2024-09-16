@@ -19,12 +19,7 @@ final class InfoViewController: UIViewController, UIViewControllerProtocol {
     init(dependencies: Dependencies) {
         self.infoView = InfoView(frame: UIScreen.main.bounds)
         self.presenter = dependencies.presenter
-        print("initialize infoVC \(id)")
         super.init(nibName: nil, bundle: nil)
-    }
-    
-    deinit {
-        print("deinit \(id)")
     }
     
     required init?(coder: NSCoder) {
@@ -39,5 +34,6 @@ final class InfoViewController: UIViewController, UIViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(infoView)
+        navigationController?.isNavigationBarHidden = true
     }
 }

@@ -33,5 +33,6 @@ final class FavoriteViewController: UIViewController, UIViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(favouriteView)
+        navigationController?.isNavigationBarHidden = true
     }
 }

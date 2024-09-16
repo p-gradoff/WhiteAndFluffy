@@ -69,7 +69,7 @@ extension FavoritePresenter: FavoritePresenterDelegate {
     
     func transmitInformation(_ data: PhotoInfoModel) {
         infoPresenter?.loadLikedPhotoInfo(by: data)
-        // print(infoPresenter!.controller!.)
+        
         controller?.pushViewController(infoPresenter!.controller!)
     }
 }

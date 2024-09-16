@@ -21,6 +21,7 @@ final class Builder {
         favoriteViewController.tabBarItem = UITabBarItem(title: "Favorite", image: UIImage(systemName: "bookmark.fill"), tag: 1)
         
         let tabBarController = UITabBarController()
+        // let tabBarController = MyTabBarController()
         tabBarController.viewControllers = [unsplashViewController, favoriteViewController]
         return tabBarController
         
@@ -51,6 +52,21 @@ final class Builder {
             let controller = UINavigationController(rootViewController: unsplashVC)
             
             return controller
+        }
+    }
+}
+
+class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.delegate = self
+    }
+
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if let index = tabBarController.viewControllers?.firstIndex(of: viewController) {
+            print("Выбрана вкладка с индексом: $$index)")
+            // Выполните необходимые действия при выборе вкладки
         }
     }
 }
