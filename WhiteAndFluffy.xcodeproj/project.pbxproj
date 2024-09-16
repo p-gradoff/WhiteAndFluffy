@@ -101,6 +101,7 @@
 		372F67552C95B927001786CE = {
 			isa = PBXGroup;
 			children = (
+				376EE8032C98D05100B35197 /* README.md */,
 				372F67602C95B927001786CE /* WhiteAndFluffy */,
 				372F675F2C95B927001786CE /* Products */,
 				53E89E03219ACFDA5EC16722 /* Pods */,
@@ -120,7 +121,6 @@
 			isa = PBXGroup;
 			children = (
 				372F677E2C96C928001786CE /* Builder.swift */,
-				376EE8032C98D05100B35197 /* README.md */,
 				372F67752C96C72A001786CE /* Screens */,
 				3724E9B32C98276E00618D8E /* AppUICreator.swift */,
 				376EE7FD2C98742B00B35197 /* Protocol */,
