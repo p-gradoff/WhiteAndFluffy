@@ -70,7 +70,10 @@ private extension InfoPresenter {
             case .success(let data):
                 setupView(with: data)
             case .failure(let error):
-                print(error.localizedDescription)
+                controller?.createAlert(
+                    title: ErrorHeader.dataError.rawValue,
+                    text: error.localizedDescription
+                )
             }
         }
     }
@@ -78,8 +81,15 @@ private extension InfoPresenter {
     private func setupView(with infoModel: InfoModel) {
         guard let model = model else { return }
         view?.imageView.sd_setImage(with: model.photoURL, completed: { [weak self] _, error, _, _ in
-            // TODO: error handling
             guard let self = self else { return }
+            
+            guard error == nil else {
+                controller?.createAlert(
+                    title: ErrorHeader.photoError.rawValue,
+                    text: error!.localizedDescription
+                )
+                return
+            }
             view?.activateConstraints()
             
             let creationDate = infoModel.createdAt?.getDate()

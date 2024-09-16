@@ -20,16 +20,14 @@ final class NetworkService {
     }
     
     func getRequest(completion: @escaping (Result<InfoModel, Error>) -> Void) {
-        // guard let photoUrl = url else { return }
-        
-        // TODO: errors handling
         AF.request(host, method: .get, parameters: parameters).response { response in
             guard response.error == nil else {
-                print(response.error!.localizedDescription)
+                completion(.failure(response.error!))
                 return
             }
             
             guard let jsonData = response.data else {
+                completion(.failure(SystemError.unexpectedNilValue))
                 print("Something went wrong with json data")
                 return
             }
@@ -45,9 +43,13 @@ final class NetworkService {
     }
 }
 
+enum SystemError: Error {
+    case unexpectedNilValue
+}
+
 enum Token: String {
-    case accessKey = "8lNBOTJy09vapQMwGzCVYY7CgVVwSxRGREoMoKuG1Yc"
-    case secretKey = "GGgvf6S80TFBpuU3m8bwJOJmMb52KAbgbsDDMzoflM8"
+    case accessKey = "baCvunmA2XzfsRavdVIzhghHURCbr4V073wovijPK-I"
+    case secretKey = "NJToujRMGpku0kZEoEVnSY5LHBHvljwcN9ykix_0Yv0"
 }
 
 extension String {
