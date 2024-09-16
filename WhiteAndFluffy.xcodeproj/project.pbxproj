@@ -64,6 +64,7 @@
 		375709D72C9701EB002E5F6B /* PhotoInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInfoModel.swift; sourceTree = "<group>"; };
 		375709DD2C975115002E5F6B /* InfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoModel.swift; sourceTree = "<group>"; };
 		376EE7FE2C98743D00B35197 /* UIViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerProtocol.swift; sourceTree = "<group>"; };
+		376EE8032C98D05100B35197 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4CDB25494AAA6FCD2F5DAA9F /* Pods-WhiteAndFluffy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhiteAndFluffy.release.xcconfig"; path = "Target Support Files/Pods-WhiteAndFluffy/Pods-WhiteAndFluffy.release.xcconfig"; sourceTree = "<group>"; };
 		82DB31CF568698A875627267 /* Pods-WhiteAndFluffy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhiteAndFluffy.debug.xcconfig"; path = "Target Support Files/Pods-WhiteAndFluffy/Pods-WhiteAndFluffy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				372F677E2C96C928001786CE /* Builder.swift */,
+				376EE8032C98D05100B35197 /* README.md */,
 				372F67752C96C72A001786CE /* Screens */,
 				3724E9B32C98276E00618D8E /* AppUICreator.swift */,
 				376EE7FD2C98742B00B35197 /* Protocol */,

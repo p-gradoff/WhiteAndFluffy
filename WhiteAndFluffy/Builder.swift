@@ -12,7 +12,7 @@ final class Builder {
     // MARK: - builds all dependencies of controllers
     static func buildTabBar() -> UITabBarController {
         let favoritePresenter = buildFavoritePresenter()
-        let infoPresenter = buildInformationViewController(favoritePresenter: favoritePresenter)
+        let infoPresenter = buildInformationScreen(favoritePresenter: favoritePresenter)
         
         let unsplashViewController = buildUnsplashViewController(using: infoPresenter)
         unsplashViewController.tabBarItem = UITabBarItem(title: "Unsplash", image: UIImage(systemName: "photo.fill"), tag: 0)
@@ -42,7 +42,7 @@ final class Builder {
         }
         
         // MARK: - builds photo's information screen
-        func buildInformationViewController(favoritePresenter: FavoritePresenterProtocol) -> InfoPresenterProtocol {
+        func buildInformationScreen(favoritePresenter: FavoritePresenterProtocol) -> InfoPresenterProtocol {
             let presenter = InfoPresenter(favoritePresenter: favoritePresenter)
             presenter.controller = InfoViewController(dependencies: .init(presenter: presenter))
             return presenter
