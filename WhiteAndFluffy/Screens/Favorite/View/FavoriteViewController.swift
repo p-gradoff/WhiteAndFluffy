@@ -13,10 +13,10 @@ protocol FavoriteViewControllerProtocol: AnyObject {
 
 final class FavoriteViewController: UIViewController {
     private let favouriteView: FavoriteViewProtocol
-    private let presenter: FavoritePresenterProtocol
+    private let presenter: FavoritePresenterDelegate
     
     struct Dependencies {
-        let presenter: FavoritePresenterProtocol
+        let presenter: FavoritePresenterDelegate
     }
     
     init(dependencies: Dependencies) {

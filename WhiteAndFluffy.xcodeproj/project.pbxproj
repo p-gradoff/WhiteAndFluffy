@@ -13,6 +13,7 @@
 		3724E9B92C98281E00618D8E /* UIFont.ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3724E9B82C98281E00618D8E /* UIFont.ext.swift */; };
 		3724E9BB2C98283900618D8E /* CormorantGaramond-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3724E9BA2C98283900618D8E /* CormorantGaramond-Bold.ttf */; };
 		3724E9BD2C98283E00618D8E /* CormorantGaramond-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3724E9BC2C98283E00618D8E /* CormorantGaramond-Regular.ttf */; };
+		3724E9C12C985AD300618D8E /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3724E9C02C985AD300618D8E /* FavoriteTableViewCell.swift */; };
 		372F67622C95B927001786CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372F67612C95B927001786CE /* AppDelegate.swift */; };
 		372F67642C95B927001786CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372F67632C95B927001786CE /* SceneDelegate.swift */; };
 		372F676B2C95B92A001786CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 372F676A2C95B92A001786CE /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 		3724E9B82C98281E00618D8E /* UIFont.ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.ext.swift; sourceTree = "<group>"; };
 		3724E9BA2C98283900618D8E /* CormorantGaramond-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CormorantGaramond-Bold.ttf"; sourceTree = "<group>"; };
 		3724E9BC2C98283E00618D8E /* CormorantGaramond-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CormorantGaramond-Regular.ttf"; sourceTree = "<group>"; };
+		3724E9C02C985AD300618D8E /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		372F675E2C95B927001786CE /* WhiteAndFluffy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhiteAndFluffy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		372F67612C95B927001786CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		372F67632C95B927001786CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			children = (
 				372F677C2C96C8B6001786CE /* FavoriteViewController.swift */,
 				372F678F2C96D1F5001786CE /* FavoriteView.swift */,
+				3724E9C02C985AD300618D8E /* FavoriteTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				375709D82C9701EB002E5F6B /* PhotoInfoModel.swift in Sources */,
 				375709D02C96FED8002E5F6B /* InfoViewController.swift in Sources */,
 				372F67962C96DF8A001786CE /* NetworkService.swift in Sources */,
+				3724E9C12C985AD300618D8E /* FavoriteTableViewCell.swift in Sources */,
 				3724E9B92C98281E00618D8E /* UIFont.ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

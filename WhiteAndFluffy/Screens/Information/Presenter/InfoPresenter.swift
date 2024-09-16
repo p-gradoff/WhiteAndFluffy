@@ -10,19 +10,22 @@ import SDWebImage
 
 protocol InfoPresenterProtocol: AnyObject {
     func loadPresenter(with view: InfoViewProtocol, controller: InfoViewControllerProtocol)
+    // func loadLikedPhotoView()
 }
 
 final class InfoPresenter {
     private let networkManager: NetworkService
     private let model: PhotoInfoModel
-    private let favoritePresenter: FavoritePresenterProtocol
+    private weak var favoritePresenter: FavoritePresenterProtocol?
     private weak var view: InfoViewProtocol?
     private weak var controller: InfoViewControllerProtocol?
     
     init(model: PhotoInfoModel, favoritePresenter: FavoritePresenterProtocol) {
         self.model = model
-        self.favoritePresenter = favoritePresenter
         self.networkManager = NetworkService()
+        self.favoritePresenter = favoritePresenter
+        
+        favoritePresenter.setupInfoPresenter(self)
     }
     
     private func setup() {
@@ -49,9 +52,9 @@ private extension InfoPresenter {
                 photoURL: model.photoURL,
                 username: view!.usernameLabel.text ?? ""
             )
-            favoritePresenter.updateData(data)
+            favoritePresenter?.updateData(data)
         case false:
-            favoritePresenter.removeData(model.photoID)
+            favoritePresenter?.removeData(model.photoID)
         }
     }
     

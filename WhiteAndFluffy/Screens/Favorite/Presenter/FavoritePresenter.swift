@@ -7,17 +7,25 @@
 
 import Foundation
 
+// MARK: - this protocol is used to update model & view data
 protocol FavoritePresenterProtocol: AnyObject {
     func updateData(_ data: FavoriteInfoModel)
     func removeData(_ id: String)
-    func loadPresenter(controller: FavoriteViewControllerProtocol)
+    func setupInfoPresenter(_ presenter: InfoPresenterProtocol)
+}
+
+// MARK: - this protocol provides access for work with presenter to view and view controller
+protocol FavoritePresenterDelegate: AnyObject {
     var view: FavoriteViewProtocol { get }
+    func loadPresenter(controller: FavoriteViewControllerProtocol)
+    func transmitInformation(_ info: FavoriteInfoModel)
 }
 
 final class FavoritePresenter {
     private let model: FavoriteModelProtocol
-    var view: FavoriteViewProtocol
+    private var infoPresenter: InfoPresenterProtocol?
     private weak var controller: FavoriteViewControllerProtocol?
+    var view: FavoriteViewProtocol
     
     struct Dependencies {
         let model: FavoriteModelProtocol
@@ -36,11 +44,8 @@ final class FavoritePresenter {
     }
 }
 
+// MARK: - data update implementation
 extension FavoritePresenter: FavoritePresenterProtocol {
-    func loadPresenter(controller: FavoriteViewControllerProtocol) {
-        self.controller = controller
-    }
-    
     func updateData(_ data: FavoriteInfoModel) {
         model.addPhoto(by: data)
         updateView()
@@ -49,5 +54,20 @@ extension FavoritePresenter: FavoritePresenterProtocol {
     func removeData(_ id: String) {
         model.removePhoto(by: id)
         updateView()
+    }
+    
+    func setupInfoPresenter(_ presenter: InfoPresenterProtocol) {
+        self.infoPresenter = presenter
+    }
+}
+
+// MARK: - work with presenter implementation
+extension FavoritePresenter: FavoritePresenterDelegate {
+    func loadPresenter(controller: FavoriteViewControllerProtocol) {
+        self.controller = controller
+    }
+    
+    func transmitInformation(_ info: FavoriteInfoModel) {
+        
     }
 }

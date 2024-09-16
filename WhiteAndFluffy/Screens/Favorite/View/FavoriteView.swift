@@ -9,18 +9,19 @@ import UIKit
 
 protocol FavoriteViewProtocol: UIView {
     func updateCellData(with data: [FavoriteInfoModel])
-    func setupFavoritePresenter(_ presenter: FavoritePresenterProtocol)
+    func setupFavoritePresenter(_ presenter: FavoritePresenterDelegate)
 }
 
 final class FavoriteView: UIView {
-    private weak var favoritePresenter: FavoritePresenterProtocol?
+    private weak var favoritePresenter: FavoritePresenterDelegate?
 
     private var cellData: [FavoriteInfoModel] = []
     
     private lazy var tableView: UITableView = {
+        $0.bouncesVertically = false
         $0.dataSource = self
         $0.delegate = self
-        $0.register(UITableViewCell.self, forCellReuseIdentifier: .cellIdentified)
+        $0.register(FavoriteTableViewCell.self, forCellReuseIdentifier: FavoriteTableViewCell.reuseID)
         return $0
     }(UITableView(frame: frame, style: .plain))
     
@@ -39,7 +40,7 @@ final class FavoriteView: UIView {
 }
 
 extension FavoriteView: FavoriteViewProtocol {
-    func setupFavoritePresenter(_ presenter: FavoritePresenterProtocol) {
+    func setupFavoritePresenter(_ presenter: FavoritePresenterDelegate) {
         self.favoritePresenter = presenter
     }
     
@@ -55,33 +56,32 @@ extension FavoriteView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: .cellIdentified, for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteTableViewCell.reuseID, for: indexPath) as? FavoriteTableViewCell else { return UITableViewCell() }
         
-        guard !cellData.isEmpty else { return UITableViewCell() }
-        var cellConfig = cell.defaultContentConfiguration()
-        cellConfig.text = cellData[indexPath.row].username
-        cellConfig.textProperties.font = .getCormorantGaramondFont(size: 32)
-        cellConfig.textProperties.alignment = .center
-        cellConfig.imageToTextPadding = 20
-        cellConfig.image = cellData[indexPath.row].photo
-        cellConfig.imageProperties.cornerRadius = 5
-        cellConfig.imageProperties.maximumSize = CGSize(width: cell.frame.height, height: cell.frame.height)
+        cell.setupCell(
+            with: cellData[indexPath.row].photo,
+            text: cellData[indexPath.row].username
+        )
         
-        cell.contentConfiguration = cellConfig
         return cell
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        "Your collection"
-    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? { "Your collection:" }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { 30 }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //
     }
+    
+    
+    
+    
 }
 
 extension FavoriteView: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 80 }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 120 }
+    
 }
 
 extension String {

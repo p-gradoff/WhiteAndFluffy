@@ -32,7 +32,7 @@ final class Builder {
         
         func buildFavoriteViewController(using presenter: FavoritePresenterProtocol) -> UINavigationController {
             let favoriteVC = FavoriteViewController(
-                dependencies: .init(presenter: presenter))
+                dependencies: .init(presenter: presenter as! FavoritePresenterDelegate))
             let controller = UINavigationController(rootViewController: favoriteVC)
             
             return controller
