@@ -50,7 +50,8 @@ private extension InfoPresenter {
                 username: view!.usernameLabel.text ?? DefaultValues.username.rawValue,
                 creationDate: model.creationDate ?? DefaultValues.creationDate.rawValue,
                 location: model.location ?? DefaultValues.location.rawValue,
-                downloadsCount: model.downloadsCount ?? DefaultValues.downloadsCount.rawValue
+                downloadsCount: model.downloadsCount ?? DefaultValues.downloadsCount.rawValue,
+                isLiked: isLiked
             )
             favoritePresenter?.updateData(data)
         case false:
@@ -88,7 +89,8 @@ private extension InfoPresenter {
                 username: infoModel.user?.name,
                 creationDate: creationDate,
                 location: infoModel.user?.location,
-                downloadsCount: String(infoModel.downloads ?? 0)
+                downloadsCount: String(infoModel.downloads ?? 0),
+                isLiked: self.model?.isLiked ?? false
             )
             self.model = data
             view?.setupInformation(from: data)

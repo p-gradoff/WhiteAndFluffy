@@ -11,6 +11,7 @@ protocol InfoViewProtocol: UIView {
     var imageView: UIImageView { get set }
     var usernameLabel: UILabel { get }
     var likePhoto: ((Bool) -> Void)? { get set }
+    var isFavorite: Bool { get set }
     
     func activateConstraints()
     func setupInformation(from model:PhotoInfoModel)
@@ -31,7 +32,7 @@ final class InfoView: UIView {
     
     internal var likePhoto: ((Bool) -> Void)?
     
-    private var isFavorite: Bool = false
+    var isFavorite: Bool = false
     
     private lazy var likeButton: UIButton = {
         .config(view: $0) { [weak self] in
@@ -45,15 +46,21 @@ final class InfoView: UIView {
     
     @objc private func onLikeButtonTouch() {
         switch isFavorite {
-        case true:
-            isFavorite.toggle()
-            likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
-        case false:
-            isFavorite.toggle()
-            likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        case true: isFavorite.toggle()
+        case false: isFavorite.toggle()
         }
         
-        self.likePhoto?(isFavorite)
+        checkIsFavorite()
+        likePhoto?(isFavorite)
+    }
+    
+    private func checkIsFavorite() {
+        switch isFavorite {
+        case true:
+        likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        case false:
+        likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
     }
     
     private lazy var canvasView: UIView = {
@@ -133,11 +140,13 @@ extension InfoView: InfoViewProtocol {
     }
     
     func setupInformation(from model: PhotoInfoModel) {
-        
         usernameLabel.text = model.username
         creationDateLabel.text = "\(String.middlePoint) Creation date: \(model.creationDate ?? DefaultValues.creationDate.rawValue)"
         locationLabel.text =  "\(String.middlePoint) Location: \(model.location ?? DefaultValues.location.rawValue)"
         downloadsLabel.text = "\(String.middlePoint) Downloads count: \(model.downloadsCount ?? DefaultValues.downloadsCount.rawValue)"
+        
+        isFavorite = model.isLiked
+        checkIsFavorite()
     }
 }
 

@@ -15,8 +15,9 @@ struct PhotoInfoModel {
     let creationDate: String?
     let location: String?
     let downloadsCount: String?
+    var isLiked: Bool
     
-    init(id: String, photo: UIImage? = nil, photoURL: URL?, username: String? = nil, creationDate: String? = nil, location: String? = nil, downloadsCount: String? = nil) {
+    init(id: String, photo: UIImage? = nil, photoURL: URL?, username: String? = nil, creationDate: String? = nil, location: String? = nil, downloadsCount: String? = nil, isLiked: Bool = false) {
         self.id = id
         self.photo = photo
         self.photoURL = photoURL
@@ -24,6 +25,7 @@ struct PhotoInfoModel {
         self.creationDate = creationDate
         self.location = location
         self.downloadsCount = downloadsCount
+        self.isLiked = isLiked
     }
 }
 
