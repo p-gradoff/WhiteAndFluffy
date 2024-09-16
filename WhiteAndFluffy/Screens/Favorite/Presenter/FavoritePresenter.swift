@@ -12,6 +12,7 @@ protocol FavoritePresenterProtocol: AnyObject {
     func updateData(_ data: PhotoInfoModel)
     func removeData(_ id: String)
     func setupInfoPresenter(_ presenter: InfoPresenterProtocol)
+    func isPhotoInFavorites(by id: String) -> Bool
 }
 
 // MARK: - this protocol provides access for work with presenter to view and view controller
@@ -58,6 +59,10 @@ extension FavoritePresenter: FavoritePresenterProtocol {
     
     func setupInfoPresenter(_ presenter: InfoPresenterProtocol) {
         self.infoPresenter = presenter
+    }
+    
+    func isPhotoInFavorites(by id: String) -> Bool {
+        model.isPhotoInFavorites(by: id)
     }
 }
 

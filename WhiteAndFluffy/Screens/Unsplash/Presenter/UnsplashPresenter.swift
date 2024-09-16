@@ -27,7 +27,12 @@ extension UnsplashPresenter: UnsplashPresenterProtocol {
     }
     
     func setupInformationScreen(with photo: UnsplashPhoto) {
-        let photoInfoModel = PhotoInfoModel(id: photo.identifier, photoURL: photo.urls[.regular])
+        let isLiked = infoPresenter.isPhotoInFavorites(by: photo.identifier)
+        let photoInfoModel = PhotoInfoModel(
+            id: photo.identifier,
+            photoURL: photo.urls[.regular],
+            isLiked: isLiked
+        )
         infoPresenter.setupPhotoInformation(model: photoInfoModel)
         
         controller?.pushViewController(infoPresenter.controller!)

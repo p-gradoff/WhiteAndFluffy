@@ -11,6 +11,7 @@ protocol FavoriteModelProtocol: AnyObject {
     var getPhotosData: [PhotoInfoModel] { get }
     func addPhoto(by model: PhotoInfoModel)
     func removePhoto(by id: String)
+    func isPhotoInFavorites(by id: String) -> Bool
 }
 
 final class FavoriteModel {
@@ -28,6 +29,10 @@ extension FavoriteModel: FavoriteModelProtocol {
     
     func removePhoto(by id: String) {
         favorites[id] = nil
+    }
+    
+    func isPhotoInFavorites(by id: String) -> Bool {
+        favorites.keys.contains(id)
     }
 }
 

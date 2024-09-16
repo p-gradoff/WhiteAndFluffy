@@ -30,8 +30,8 @@ struct PhotoInfoModel {
 }
 
 enum DefaultValues: String {
-    case username = "user"
+    case username = "User"
     case creationDate = "1970-01-01"
-    case location = "Moscow"
+    case location = "Unknown location"
     case downloadsCount = "0"
 }

@@ -12,6 +12,7 @@ protocol InfoPresenterProtocol: AnyObject {
     func loadPresenter(with view: InfoViewProtocol, controller: UIViewControllerProtocol)
     func loadLikedPhotoInfo(by data: PhotoInfoModel)
     func setupPhotoInformation(model: PhotoInfoModel)
+    func isPhotoInFavorites(by id: String) -> Bool
     var controller: UIViewControllerProtocol? { get }
 }
 
@@ -113,5 +114,11 @@ extension InfoPresenter: InfoPresenterProtocol {
     
     func loadLikedPhotoInfo(by data: PhotoInfoModel) {
         view?.imageView.image = data.photo
+        view?.setupInformation(from: data)
+    }
+    
+    // MARK: - method that checks if the current photo is in the favorites
+    func isPhotoInFavorites(by id: String) -> Bool {
+        favoritePresenter!.isPhotoInFavorites(by: id)
     }
 }
