@@ -9,12 +9,10 @@ import UnsplashPhotoPicker
 
 struct PhotoInfoModel {
     let photoID: String
-    let fullPhotoURL: URL?
-    let smallPhotoURL: URL?
+    let photoURL: URL?
     
     init(photo: UnsplashPhoto) {
         self.photoID = photo.identifier
-        self.fullPhotoURL = photo.urls[.full]
-        self.smallPhotoURL = photo.urls[.small]
+        self.photoURL = photo.urls[.regular]
     }
 }

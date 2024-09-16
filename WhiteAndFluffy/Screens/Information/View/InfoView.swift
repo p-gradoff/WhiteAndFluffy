@@ -10,6 +10,7 @@ import UIKit
 protocol InfoViewProtocol: UIView {
     var imageView: UIImageView { get set }
     func activateConstraints()
+    func setupInformation(username: String, creationDate: String, location: String, downloadsCount: String)
 }
 
 final class InfoView: UIView {
@@ -21,13 +22,47 @@ final class InfoView: UIView {
         }
     }(UIImageView())
     
+    private var usernameLabel: UILabel = AppUICreator.createLabel(
+        with: .getCormorantGaramondFont(type: .bold, size: 32),
+        alignment: .center
+    )
+    
     private lazy var canvasView: UIView = {
         .config(view: $0) {
-            $0.backgroundColor = .black
+            $0.backgroundColor = .appLightGray
             $0.layer.cornerRadius = 15
             $0.clipsToBounds = true
         }
     }(UIView())
+
+    private var creationDateLabel: UILabel = AppUICreator.createLabel(
+        with: .systemFont(ofSize: 18, weight: .thin),
+        text: "\(String.middlePoint) Creation date: "
+    )
+    
+    private var locationLabel: UILabel = AppUICreator.createLabel(
+        with: .systemFont(ofSize: 18, weight: .thin),
+        text: "\(String.middlePoint) Location: "
+    )
+    
+    private var downloadsLabel: UILabel = AppUICreator.createLabel(
+        with: .systemFont(ofSize: 18, weight: .thin),
+        text: "\(String.middlePoint) Downloads count: "
+    )
+    
+    private lazy var infoStackView: UIStackView = {
+        .config(view: UIStackView()) { [weak self] stack in
+            stack.axis = .vertical
+            //stack.spacing = 10
+            stack.alignment = .leading
+            stack.distribution = .fillEqually
+            
+            guard let self = self else { return }
+            [creationDateLabel, locationLabel, downloadsLabel].forEach { label in
+                stack.addArrangedSubview(label)
+            }
+        }
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,21 +75,8 @@ final class InfoView: UIView {
     
     private func setupView() {
         backgroundColor = .white
-        addSubviews(imageView, canvasView)
-        // activateImageViewLayout()
-    }
-    
-    private func activateImageViewLayout() {
-        NSLayoutConstraint.activate([
-            imageView.widthAnchor.constraint(equalTo: widthAnchor, constant: -40),
-            imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            imageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            
-            canvasView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 15),
-            canvasView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            canvasView.widthAnchor.constraint(equalTo: imageView.widthAnchor),
-            canvasView.heightAnchor.constraint(equalToConstant: 100)
-        ])
+        canvasView.addSubview(infoStackView)
+        addSubviews(imageView, usernameLabel, canvasView)
     }
 }
 
@@ -64,13 +86,30 @@ extension InfoView: InfoViewProtocol {
             imageView.widthAnchor.constraint(equalTo: widthAnchor, constant: -40),
             imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             imageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: imageView.image!.getRatio()),
+            imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -320),
             
-            // canvasView.topAnchor.constraint(equalTo: topAnchor, constant: 500),
-            canvasView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 15),
+            usernameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
+            usernameLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            usernameLabel.widthAnchor.constraint(equalTo: imageView.widthAnchor),
+            usernameLabel.heightAnchor.constraint(equalToConstant: 36),
+            
+            canvasView.topAnchor.constraint(equalTo: usernameLabel.bottomAnchor, constant: 18),
             canvasView.centerXAnchor.constraint(equalTo: centerXAnchor),
             canvasView.widthAnchor.constraint(equalTo: imageView.widthAnchor),
-            canvasView.heightAnchor.constraint(equalToConstant: 100)
+            canvasView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            
+            infoStackView.topAnchor.constraint(equalTo: canvasView.topAnchor, constant: 10),
+            infoStackView.leadingAnchor.constraint(equalTo: canvasView.leadingAnchor, constant: 10),
+            infoStackView.trailingAnchor.constraint(equalTo: canvasView.trailingAnchor, constant: -10),
+            infoStackView.bottomAnchor.constraint(equalTo: canvasView.bottomAnchor, constant: -10)
         ])
     }
+    
+    func setupInformation(username: String, creationDate: String, location: String, downloadsCount: String) {
+        usernameLabel.text = username
+        creationDateLabel.text?.append(creationDate)
+        locationLabel.text?.append(location)
+        downloadsLabel.text?.append(downloadsCount)
+    }
 }
+

@@ -49,13 +49,19 @@ private extension InfoPresenter {
     }
     
     private func setupView(with infoModel: InfoModel) {
-        view?.imageView.sd_setImage(with: model.fullPhotoURL, completed: { [weak self] _, error, _, _ in
+        view?.imageView.sd_setImage(with: model.photoURL, completed: { [weak self] _, error, _, _ in
             // TODO: error handling
             guard let self = self else { return }
             view?.activateConstraints()
-        })
             
-        
+            let creationDate = infoModel.createdAt?.getDate()
+            view?.setupInformation(
+                username: infoModel.user?.name ?? "Default name",
+                creationDate: creationDate ?? "1970-01-01",
+                location: infoModel.user?.location ?? "Moscow",
+                downloadsCount: String(infoModel.downloads ?? 0)
+            )
+        })
     }
 }
 

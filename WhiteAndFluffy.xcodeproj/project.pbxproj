@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		3724E9A72C97FE1900618D8E /* UIImage.ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3724E9A62C97FE1900618D8E /* UIImage.ext.swift */; };
+		3724E9B42C98276E00618D8E /* AppUICreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3724E9B32C98276E00618D8E /* AppUICreator.swift */; };
+		3724E9B62C9827CF00618D8E /* String.ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3724E9B52C9827CF00618D8E /* String.ext.swift */; };
+		3724E9B92C98281E00618D8E /* UIFont.ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3724E9B82C98281E00618D8E /* UIFont.ext.swift */; };
+		3724E9BB2C98283900618D8E /* CormorantGaramond-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3724E9BA2C98283900618D8E /* CormorantGaramond-Bold.ttf */; };
+		3724E9BD2C98283E00618D8E /* CormorantGaramond-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3724E9BC2C98283E00618D8E /* CormorantGaramond-Regular.ttf */; };
 		372F67622C95B927001786CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372F67612C95B927001786CE /* AppDelegate.swift */; };
 		372F67642C95B927001786CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372F67632C95B927001786CE /* SceneDelegate.swift */; };
 		372F676B2C95B92A001786CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 372F676A2C95B92A001786CE /* Assets.xcassets */; };
@@ -32,6 +37,11 @@
 /* Begin PBXFileReference section */
 		22EDE8560DBFC6E82A58A58A /* Pods_WhiteAndFluffy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhiteAndFluffy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3724E9A62C97FE1900618D8E /* UIImage.ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.ext.swift; sourceTree = "<group>"; };
+		3724E9B32C98276E00618D8E /* AppUICreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUICreator.swift; sourceTree = "<group>"; };
+		3724E9B52C9827CF00618D8E /* String.ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.ext.swift; sourceTree = "<group>"; };
+		3724E9B82C98281E00618D8E /* UIFont.ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.ext.swift; sourceTree = "<group>"; };
+		3724E9BA2C98283900618D8E /* CormorantGaramond-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CormorantGaramond-Bold.ttf"; sourceTree = "<group>"; };
+		3724E9BC2C98283E00618D8E /* CormorantGaramond-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CormorantGaramond-Regular.ttf"; sourceTree = "<group>"; };
 		372F675E2C95B927001786CE /* WhiteAndFluffy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhiteAndFluffy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		372F67612C95B927001786CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		372F67632C95B927001786CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +86,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		3724E9B72C9827F100618D8E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3724E9BC2C98283E00618D8E /* CormorantGaramond-Regular.ttf */,
+				3724E9BA2C98283900618D8E /* CormorantGaramond-Bold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		372F67552C95B927001786CE = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +119,7 @@
 				372F677E2C96C928001786CE /* Builder.swift */,
 				372F67752C96C72A001786CE /* Screens */,
 				372F67942C96DC38001786CE /* NetworkService */,
+				3724E9B72C9827F100618D8E /* Fonts */,
 				372F67882C96CE47001786CE /* Extension */,
 				372F67632C95B927001786CE /* SceneDelegate.swift */,
 				372F67612C95B927001786CE /* AppDelegate.swift */,
@@ -113,6 +133,7 @@
 		372F67752C96C72A001786CE /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				3724E9B32C98276E00618D8E /* AppUICreator.swift */,
 				375709CD2C96FE78002E5F6B /* Information */,
 				375709C52C96F9B3002E5F6B /* Unsplash */,
 				372F67772C96C775001786CE /* Favorite */,
@@ -144,6 +165,8 @@
 			children = (
 				372F67892C96CE64001786CE /* UIView.ext.swift */,
 				3724E9A62C97FE1900618D8E /* UIImage.ext.swift */,
+				3724E9B52C9827CF00618D8E /* String.ext.swift */,
+				3724E9B82C98281E00618D8E /* UIFont.ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -303,6 +326,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				372F676B2C95B92A001786CE /* Assets.xcassets in Resources */,
+				3724E9BB2C98283900618D8E /* CormorantGaramond-Bold.ttf in Resources */,
+				3724E9BD2C98283E00618D8E /* CormorantGaramond-Regular.ttf in Resources */,
 				372F676E2C95B92A001786CE /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,6 +381,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3724E9B62C9827CF00618D8E /* String.ext.swift in Sources */,
 				372F678E2C96D1BB001786CE /* FavoriteModel.swift in Sources */,
 				372F67622C95B927001786CE /* AppDelegate.swift in Sources */,
 				372F678A2C96CE64001786CE /* UIView.ext.swift in Sources */,
@@ -364,6 +390,7 @@
 				372F67932C96D2B3001786CE /* FavoritePresenter.swift in Sources */,
 				375709C42C96E7C4002E5F6B /* UnsplashViewController.swift in Sources */,
 				375709DE2C975115002E5F6B /* InfoModel.swift in Sources */,
+				3724E9B42C98276E00618D8E /* AppUICreator.swift in Sources */,
 				375709D52C97017C002E5F6B /* InfoPresenter.swift in Sources */,
 				372F677D2C96C8B6001786CE /* FavoriteViewController.swift in Sources */,
 				3724E9A72C97FE1900618D8E /* UIImage.ext.swift in Sources */,
@@ -373,6 +400,7 @@
 				375709D82C9701EB002E5F6B /* PhotoInfoModel.swift in Sources */,
 				375709D02C96FED8002E5F6B /* InfoViewController.swift in Sources */,
 				372F67962C96DF8A001786CE /* NetworkService.swift in Sources */,
+				3724E9B92C98281E00618D8E /* UIFont.ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

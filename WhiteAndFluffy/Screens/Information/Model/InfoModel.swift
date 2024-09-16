@@ -19,6 +19,7 @@ struct InfoModel: Codable {
     let currentUserCollections: CurrentUserCollections?
     let urls: InfoUrls?
     let links: InfoLinks?
+    let downloads: Int?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -29,7 +30,7 @@ struct InfoModel: Codable {
         case likedByUser = "liked_by_user"
         case description, user
         case currentUserCollections = "current_user_collections"
-        case urls, links
+        case urls, links, downloads
     }
 }
 
@@ -45,6 +46,7 @@ struct User: Codable {
     let instagramUsername, twitterUsername: String?
     let profileImage: ProfileImage?
     let links: UserLinks?
+    
     
     enum CodingKeys: String, CodingKey {
         case id, username, name
