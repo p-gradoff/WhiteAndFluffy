@@ -5,8 +5,9 @@
 //  Created by Павел Градов on 15.09.2024.
 //
 
-import UnsplashPhotoPicker
+import UIKit
 
+// MARK: - photo's information model that contains all the necessary information
 struct PhotoInfoModel {
     let id: String
     let photo: UIImage?
@@ -29,6 +30,7 @@ struct PhotoInfoModel {
     }
 }
 
+// MARK: - contains default photo's info values 
 enum DefaultValues: String {
     case username = "User"
     case creationDate = "1970-01-01"

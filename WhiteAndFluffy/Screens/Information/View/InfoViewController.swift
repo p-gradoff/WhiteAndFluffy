@@ -7,11 +7,13 @@
 
 import UIKit
 
+// MARK: - controller that presents photo and it's information
 final class InfoViewController: UIViewController, UIViewControllerProtocol {
+    // MARK: - private properties
     private weak var presenter: InfoPresenterProtocol?
     private let infoView: InfoViewProtocol
-    internal var id: String = UUID().uuidString
 
+    // MARK: - initialization
     struct Dependencies {
         let presenter: InfoPresenterProtocol
     }

@@ -8,8 +8,10 @@
 import Foundation
 
 extension String {
+    // MARK: - middlePoint character
     static let middlePoint = "\u{2022}"
     
+    // MARK: - method that removes extra characters
     func getDate() -> String {
         let endIndex = self.index(self.startIndex, offsetBy: 9)
         let sliceString = self[...endIndex]

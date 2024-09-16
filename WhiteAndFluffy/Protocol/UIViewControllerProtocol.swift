@@ -11,6 +11,7 @@ protocol UIViewControllerProtocol: UIViewController {
     func pushViewController(_ targetController: UIViewController)
 }
 
+// MARK: - UIViewController's extension that specify navigation transition and alert creation
 extension UIViewController {
     func pushViewController(_ targetController: UIViewController) {
         navigationController?.pushViewController(targetController, animated: false)
@@ -29,6 +30,7 @@ extension UIViewController {
     }
 }
 
+// MARK: - contains errors naming
 enum ErrorHeader: String {
     case photoError = "Loading photo error"
     case dataError = "Loading data error"

@@ -9,6 +9,7 @@ import UnsplashPhotoPicker
 import UIKit
 
 final class UnsplashViewController: UIViewController, UIViewControllerProtocol {
+    // MARK: - private properties
     private let presenter: UnsplashPresenterProtocol
     
     private let config = UnsplashPhotoPickerConfiguration(
@@ -22,6 +23,7 @@ final class UnsplashViewController: UIViewController, UIViewControllerProtocol {
         return $0
     }(UnsplashPhotoPicker(configuration: config))
     
+    // MARK: - initialization
     struct Dependencies {
         let presenter: UnsplashPresenterProtocol
     }
@@ -51,6 +53,7 @@ final class UnsplashViewController: UIViewController, UIViewControllerProtocol {
     
 }
 
+// MARK: - delegate to work with chosen photos
 extension UnsplashViewController: UnsplashPhotoPickerDelegate {
     func unsplashPhotoPicker(_ photoPicker: UnsplashPhotoPicker, didSelectPhotos photos: [UnsplashPhoto]) {
         presenter.setupInformationScreen(with: photos.first!)

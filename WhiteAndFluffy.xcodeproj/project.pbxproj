@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3724E9A72C97FE1900618D8E /* UIImage.ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3724E9A62C97FE1900618D8E /* UIImage.ext.swift */; };
 		3724E9B42C98276E00618D8E /* AppUICreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3724E9B32C98276E00618D8E /* AppUICreator.swift */; };
 		3724E9B62C9827CF00618D8E /* String.ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3724E9B52C9827CF00618D8E /* String.ext.swift */; };
 		3724E9B92C98281E00618D8E /* UIFont.ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3724E9B82C98281E00618D8E /* UIFont.ext.swift */; };
@@ -38,7 +37,6 @@
 
 /* Begin PBXFileReference section */
 		22EDE8560DBFC6E82A58A58A /* Pods_WhiteAndFluffy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhiteAndFluffy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3724E9A62C97FE1900618D8E /* UIImage.ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.ext.swift; sourceTree = "<group>"; };
 		3724E9B32C98276E00618D8E /* AppUICreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUICreator.swift; sourceTree = "<group>"; };
 		3724E9B52C9827CF00618D8E /* String.ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.ext.swift; sourceTree = "<group>"; };
 		3724E9B82C98281E00618D8E /* UIFont.ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.ext.swift; sourceTree = "<group>"; };
@@ -170,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				372F67892C96CE64001786CE /* UIView.ext.swift */,
-				3724E9A62C97FE1900618D8E /* UIImage.ext.swift */,
 				3724E9B52C9827CF00618D8E /* String.ext.swift */,
 				3724E9B82C98281E00618D8E /* UIFont.ext.swift */,
 			);
@@ -407,7 +404,6 @@
 				3724E9B42C98276E00618D8E /* AppUICreator.swift in Sources */,
 				375709D52C97017C002E5F6B /* InfoPresenter.swift in Sources */,
 				372F677D2C96C8B6001786CE /* FavoriteViewController.swift in Sources */,
-				3724E9A72C97FE1900618D8E /* UIImage.ext.swift in Sources */,
 				372F67642C95B927001786CE /* SceneDelegate.swift in Sources */,
 				375709CA2C96FCDA002E5F6B /* UnsplashPresenter.swift in Sources */,
 				372F677F2C96C928001786CE /* Builder.swift in Sources */,

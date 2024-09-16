@@ -7,10 +7,13 @@
 
 import UIKit
 
+// MARK: - controller that presents favorite photo collection
 final class FavoriteViewController: UIViewController, UIViewControllerProtocol {
+    // MARK: - private properties
     private let favouriteView: FavoriteViewProtocol
     private let presenter: FavoritePresenterDelegate
     
+    // MARK: - initialization
     struct Dependencies {
         let presenter: FavoritePresenterDelegate
     }

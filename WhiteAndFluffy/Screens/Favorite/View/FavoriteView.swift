@@ -12,9 +12,10 @@ protocol FavoriteViewProtocol: UIView {
     func setupFavoritePresenter(_ presenter: FavoritePresenterDelegate)
 }
 
+// MARK: - view that contains all necessary information for FavoriteViewController
 final class FavoriteView: UIView {
+    // MARK: - private properties
     private weak var favoritePresenter: FavoritePresenterDelegate?
-
     private var cellData: [PhotoInfoModel] = []
     
     private lazy var tableView: UITableView = {
@@ -25,6 +26,7 @@ final class FavoriteView: UIView {
         return $0
     }(UITableView(frame: frame, style: .plain))
     
+    // MARK: - initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -50,6 +52,7 @@ extension FavoriteView: FavoriteViewProtocol {
     }
 }
 
+// MARK: - methods for work with UITableView
 extension FavoriteView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         cellData.count
@@ -77,9 +80,4 @@ extension FavoriteView: UITableViewDataSource {
 
 extension FavoriteView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 120 }
-    
-}
-
-extension String {
-    static let cellIdentified = "\(UITableViewCell.self)"
 }

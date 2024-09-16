@@ -14,23 +14,28 @@ protocol FavoriteModelProtocol: AnyObject {
     func isPhotoInFavorites(by id: String) -> Bool
 }
 
+// MARK: - class that presents favorite photos collection and allows to edit it
 final class FavoriteModel {
     private var favorites: [String: PhotoInfoModel] = [:]
 }
 
 extension FavoriteModel: FavoriteModelProtocol {
+    // MARK: - get all collection photos
     var getPhotosData: [PhotoInfoModel] {
         get { Array(favorites.values) }
     }
     
+    // MARK: - add new photo in collection
     func addPhoto(by model: PhotoInfoModel) {
         favorites[model.id] = model
     }
     
+    // MARK: - remove photo from colllection
     func removePhoto(by id: String) {
         favorites[id] = nil
     }
     
+    // MARK: - check for photo in the collection
     func isPhotoInFavorites(by id: String) -> Bool {
         favorites.keys.contains(id)
     }

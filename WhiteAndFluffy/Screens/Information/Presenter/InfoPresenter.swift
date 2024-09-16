@@ -17,12 +17,16 @@ protocol InfoPresenterProtocol: AnyObject {
 }
 
 final class InfoPresenter {
+    // MARK: - internal protocol properties
+    internal var controller: UIViewControllerProtocol?
+    
+    // MARK: - private properties
     private let networkManager: NetworkService
     private var model: PhotoInfoModel?
     private weak var favoritePresenter: FavoritePresenterProtocol?
     private weak var view: InfoViewProtocol?
-    var controller: UIViewControllerProtocol?
     
+    // MARK: - initialization
     init(favoritePresenter: FavoritePresenterProtocol) {
         self.networkManager = NetworkService()
         self.favoritePresenter = favoritePresenter
@@ -32,6 +36,7 @@ final class InfoPresenter {
 }
 
 private extension InfoPresenter {
+    // MARK: - sets a dependency between the likeButton and the process of adding to favourites
     private func setupHandlers() {
         view?.likePhoto = { [weak self] isLiked in
             guard let self = self else { return }
@@ -40,6 +45,7 @@ private extension InfoPresenter {
         }
     }
     
+    // MARK: - responds to a likeButton tap
     private func onLikePhotoTouched(isLiked: Bool) {
         guard let model = model else { return }
         switch isLiked {
@@ -54,18 +60,23 @@ private extension InfoPresenter {
                 downloadsCount: model.downloadsCount ?? DefaultValues.downloadsCount.rawValue,
                 isLiked: isLiked
             )
+            
+            // MARK: - adds photo to favorites
             favoritePresenter?.updateData(data)
         case false:
+            // MARK: - removes photo from favorites
             favoritePresenter?.removeData(model.id)
         }
     }
     
+    // MARK: - sends a data download request to the NetworkService
     private func loadData() {
         guard let model = model else { return }
         networkManager.setupRequest(id: model.id)
         networkManager.getRequest { [weak self] result in
             guard let self = self else { return }
             
+            // MARK: - setups view if success, calls alert if failure
             switch result {
             case .success(let data):
                 setupView(with: data)
@@ -78,6 +89,7 @@ private extension InfoPresenter {
         }
     }
     
+    // MARK: - loads photo and setups photo's information on view
     private func setupView(with infoModel: InfoModel) {
         guard let model = model else { return }
         view?.imageView.sd_setImage(with: model.photoURL, completed: { [weak self] _, error, _, _ in
@@ -110,6 +122,7 @@ private extension InfoPresenter {
 }
 
 extension InfoPresenter: InfoPresenterProtocol {
+    // MARK: - presenter initialization for controller
     func loadPresenter(with view: InfoViewProtocol, controller: UIViewControllerProtocol) {
         self.view = view
         self.controller = controller
@@ -117,11 +130,13 @@ extension InfoPresenter: InfoPresenterProtocol {
         setupHandlers()
     }
     
+    // MARK: - method that begins view's setup
     func setupPhotoInformation(model: PhotoInfoModel) {
         self.model = model
         loadData()
     }
     
+    // MARK: - method for communitaion between favoritePresenter and infoPresenter. Photos that were added to favorites will not be re-uploaded. Their data has been saved
     func loadLikedPhotoInfo(by data: PhotoInfoModel) {
         view?.imageView.image = data.photo
         view?.setupInformation(from: data)

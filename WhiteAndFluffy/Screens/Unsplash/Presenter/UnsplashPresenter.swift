@@ -13,19 +13,23 @@ protocol UnsplashPresenterProtocol: AnyObject {
 }
 
 final class UnsplashPresenter {
+    // MARK: - private properties
     private weak var controller: UIViewControllerProtocol?
     private var infoPresenter: InfoPresenterProtocol
     
+    // MARK: - initialization
     init(_ infoPresenter: InfoPresenterProtocol) {
         self.infoPresenter = infoPresenter
     }
 }
 
 extension UnsplashPresenter: UnsplashPresenterProtocol {
+    // MARK: - presenter initialization for controller
     func loadPresenter(controller: UIViewControllerProtocol) {
         self.controller = controller
     }
     
+    // MARK: - method that sends initial information of chosen photo
     func setupInformationScreen(with photo: UnsplashPhoto) {
         let isLiked = infoPresenter.isPhotoInFavorites(by: photo.identifier)
         let photoInfoModel = PhotoInfoModel(

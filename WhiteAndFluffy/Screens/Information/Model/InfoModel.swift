@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: InfoModel
+// MARK: - model that that represents the JSON-file structure that comes from the request
 struct InfoModel: Codable {
     let id, createdAt, updatedAt: String?
     let width, height: Int?
@@ -34,12 +34,12 @@ struct InfoModel: Codable {
     }
 }
 
-// MARK: info structures
+// MARK: - info's models
 struct CurrentUserCollections: Codable { }
 struct InfoUrls: Codable { }
 struct InfoLinks: Codable { }
 
-// MARK: User
+// MARK: - user model
 struct User: Codable {
     let id, username, name, portfolioUrl, bio, location: String?
     let totalLikes, totalPhotos, totalCollections: Int?
@@ -62,6 +62,6 @@ struct User: Codable {
     }
 }
 
-// MARK: user's structures
+// MARK: - user's models
 struct ProfileImage: Codable { }
 struct UserLinks: Codable { }

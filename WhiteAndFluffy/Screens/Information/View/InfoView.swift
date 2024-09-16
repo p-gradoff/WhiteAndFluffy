@@ -17,7 +17,9 @@ protocol InfoViewProtocol: UIView {
     func setupInformation(from model:PhotoInfoModel)
 }
 
+// MARK: - view that contains all necessary information for InfoViewController
 final class InfoView: UIView {
+    // MARK: - internal protocol properties
     internal var imageView: UIImageView = {
         .config(view: $0) {
             $0.contentMode = .scaleAspectFill
@@ -32,8 +34,9 @@ final class InfoView: UIView {
     
     internal var likePhoto: ((Bool) -> Void)?
     
-    var isFavorite: Bool = false
+    internal var isFavorite: Bool = false
     
+    // MARK: - private properties
     private lazy var likeButton: UIButton = {
         .config(view: $0) { [weak self] in
             guard let self = self else { return }
@@ -96,6 +99,7 @@ final class InfoView: UIView {
         }
     }()
     
+    // MARK: - initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -113,6 +117,7 @@ final class InfoView: UIView {
 }
 
 extension InfoView: InfoViewProtocol {
+    // MARK: - this function is the separated protocol method because of asynchronous data loading. The call will only be made when the download is complete to show the information correctly
     func activateConstraints() {
         NSLayoutConstraint.activate([
             imageView.widthAnchor.constraint(equalTo: widthAnchor, constant: -40),
@@ -139,6 +144,7 @@ extension InfoView: InfoViewProtocol {
         ])
     }
     
+    // MARK: - method that allows presenter to setup view's components
     func setupInformation(from model: PhotoInfoModel) {
         usernameLabel.text = model.username
         creationDateLabel.text = "\(String.middlePoint) Creation date: \(model.creationDate ?? DefaultValues.creationDate.rawValue)"

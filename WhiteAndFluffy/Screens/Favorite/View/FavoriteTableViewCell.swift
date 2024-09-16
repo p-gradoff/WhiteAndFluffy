@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - cell that contains photo miniature and author's nickname
 final class FavoriteTableViewCell: UITableViewCell {
     static let reuseID: String = UUID().uuidString
     
