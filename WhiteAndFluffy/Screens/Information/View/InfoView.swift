@@ -9,6 +9,9 @@ import UIKit
 
 protocol InfoViewProtocol: UIView {
     var imageView: UIImageView { get set }
+    var usernameLabel: UILabel { get }
+    var likePhoto: ((Bool) -> Void)? { get set }
+    
     func activateConstraints()
     func setupInformation(username: String, creationDate: String, location: String, downloadsCount: String)
 }
@@ -22,10 +25,36 @@ final class InfoView: UIView {
         }
     }(UIImageView())
     
-    private var usernameLabel: UILabel = AppUICreator.createLabel(
-        with: .getCormorantGaramondFont(type: .bold, size: 32),
-        alignment: .center
+    internal var usernameLabel: UILabel = AppUICreator.createLabel(
+        with: .getCormorantGaramondFont(type: .bold, size: 32)
     )
+    
+    internal var likePhoto: ((Bool) -> Void)?
+    
+    private var isFavorite: Bool = false
+    
+    private lazy var likeButton: UIButton = {
+        .config(view: $0) { [weak self] in
+            guard let self = self else { return }
+            
+            $0.setImage(UIImage(systemName: "heart"), for: .normal)
+            $0.tintColor = .systemRed
+            $0.addTarget(self, action: #selector(onLikeButtonTouch), for: .touchUpInside)
+        }
+    }(UIButton())
+    
+    @objc private func onLikeButtonTouch() {
+        switch isFavorite {
+        case true:
+            isFavorite.toggle()
+            likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        case false:
+            isFavorite.toggle()
+            likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        }
+        
+        self.likePhoto?(isFavorite)
+    }
     
     private lazy var canvasView: UIView = {
         .config(view: $0) {
@@ -53,7 +82,6 @@ final class InfoView: UIView {
     private lazy var infoStackView: UIStackView = {
         .config(view: UIStackView()) { [weak self] stack in
             stack.axis = .vertical
-            //stack.spacing = 10
             stack.alignment = .leading
             stack.distribution = .fillEqually
             
@@ -76,7 +104,7 @@ final class InfoView: UIView {
     private func setupView() {
         backgroundColor = .white
         canvasView.addSubview(infoStackView)
-        addSubviews(imageView, usernameLabel, canvasView)
+        addSubviews(imageView, usernameLabel, likeButton, canvasView)
     }
 }
 
@@ -88,10 +116,12 @@ extension InfoView: InfoViewProtocol {
             imageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -320),
             
-            usernameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
+            usernameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 18),
             usernameLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            usernameLabel.widthAnchor.constraint(equalTo: imageView.widthAnchor),
-            usernameLabel.heightAnchor.constraint(equalToConstant: 36),
+            usernameLabel.heightAnchor.constraint(equalToConstant: 40),
+            
+            likeButton.leadingAnchor.constraint(equalTo: usernameLabel.trailingAnchor, constant: 15),
+            likeButton.centerYAnchor.constraint(equalTo: usernameLabel.centerYAnchor, constant: 3),
             
             canvasView.topAnchor.constraint(equalTo: usernameLabel.bottomAnchor, constant: 18),
             canvasView.centerXAnchor.constraint(equalTo: centerXAnchor),

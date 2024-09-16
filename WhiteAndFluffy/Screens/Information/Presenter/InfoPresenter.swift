@@ -15,11 +15,13 @@ protocol InfoPresenterProtocol: AnyObject {
 final class InfoPresenter {
     private let networkManager: NetworkService
     private let model: PhotoInfoModel
+    private let favoritePresenter: FavoritePresenterProtocol
     private weak var view: InfoViewProtocol?
     private weak var controller: InfoViewControllerProtocol?
     
-    init(model: PhotoInfoModel) {
+    init(model: PhotoInfoModel, favoritePresenter: FavoritePresenterProtocol) {
         self.model = model
+        self.favoritePresenter = favoritePresenter
         self.networkManager = NetworkService()
     }
     
@@ -31,7 +33,26 @@ final class InfoPresenter {
 
 private extension InfoPresenter {
     private func setupHandlers() {
-        
+        view?.likePhoto = { [weak self] isLiked in
+            guard let self = self else { return }
+            
+            self.onLikePhotoTouched(isLiked: isLiked)
+        }
+    }
+    
+    private func onLikePhotoTouched(isLiked: Bool) {
+        switch isLiked {
+        case true:
+            let data = FavoriteInfoModel(
+                id: model.photoID,
+                photo: view!.imageView.image!,
+                photoURL: model.photoURL,
+                username: view!.usernameLabel.text ?? ""
+            )
+            favoritePresenter.updateData(data)
+        case false:
+            favoritePresenter.removeData(model.photoID)
+        }
     }
     
     private func loadData() {

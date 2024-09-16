@@ -11,8 +11,8 @@ struct PhotoInfoModel {
     let photoID: String
     let photoURL: URL?
     
-    init(photo: UnsplashPhoto) {
-        self.photoID = photo.identifier
-        self.photoURL = photo.urls[.regular]
+    init(photoID: String, photoURL: URL?) {
+        self.photoID = photoID
+        self.photoURL = photoURL
     }
 }

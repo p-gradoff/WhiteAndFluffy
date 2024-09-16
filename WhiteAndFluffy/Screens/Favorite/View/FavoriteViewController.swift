@@ -20,7 +20,7 @@ final class FavoriteViewController: UIViewController {
     }
     
     init(dependencies: Dependencies) {
-        self.favouriteView = FavoriteView(frame: UIScreen.main.bounds)
+        self.favouriteView = dependencies.presenter.view
         self.presenter = dependencies.presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -31,12 +31,12 @@ final class FavoriteViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        presenter.loadPresenter(with: favouriteView, controller: self)
+        presenter.loadPresenter(controller: self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemMint
+        view.addSubview(favouriteView)
     }
 }
 

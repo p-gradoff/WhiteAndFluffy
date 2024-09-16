@@ -14,6 +14,11 @@ protocol UnsplashPresenterProtocol: AnyObject {
 
 final class UnsplashPresenter {
     private weak var controller: UnsplashViewControllerProtocol?
+    private var favoritePresenter: FavoritePresenterProtocol
+    
+    init(_ favPresenter: FavoritePresenterProtocol) {
+        self.favoritePresenter = favPresenter
+    }
 }
 
 extension UnsplashPresenter: UnsplashPresenterProtocol {
@@ -22,7 +27,11 @@ extension UnsplashPresenter: UnsplashPresenterProtocol {
     }
     
     func setupInformationScreen(with photo: UnsplashPhoto) {
-        let infoViewController = Builder.buildInformationViewController(photo: photo)
+        let infoViewController = Builder.buildInformationViewController(
+            photoID: photo.identifier,
+            photoURL: photo.urls[.regular],
+            favoritePresenter: self.favoritePresenter
+        )
         controller?.pushViewController(infoViewController)
     }
 }
