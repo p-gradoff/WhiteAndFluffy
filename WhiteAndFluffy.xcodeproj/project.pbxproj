@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3724E9A72C97FE1900618D8E /* UIImage.ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3724E9A62C97FE1900618D8E /* UIImage.ext.swift */; };
 		372F67622C95B927001786CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372F67612C95B927001786CE /* AppDelegate.swift */; };
 		372F67642C95B927001786CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372F67632C95B927001786CE /* SceneDelegate.swift */; };
 		372F676B2C95B92A001786CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 372F676A2C95B92A001786CE /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		22EDE8560DBFC6E82A58A58A /* Pods_WhiteAndFluffy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhiteAndFluffy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3724E9A62C97FE1900618D8E /* UIImage.ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.ext.swift; sourceTree = "<group>"; };
 		372F675E2C95B927001786CE /* WhiteAndFluffy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhiteAndFluffy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		372F67612C95B927001786CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		372F67632C95B927001786CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				372F67892C96CE64001786CE /* UIView.ext.swift */,
+				3724E9A62C97FE1900618D8E /* UIImage.ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				375709DE2C975115002E5F6B /* InfoModel.swift in Sources */,
 				375709D52C97017C002E5F6B /* InfoPresenter.swift in Sources */,
 				372F677D2C96C8B6001786CE /* FavoriteViewController.swift in Sources */,
+				3724E9A72C97FE1900618D8E /* UIImage.ext.swift in Sources */,
 				372F67642C95B927001786CE /* SceneDelegate.swift in Sources */,
 				375709CA2C96FCDA002E5F6B /* UnsplashPresenter.swift in Sources */,
 				372F677F2C96C928001786CE /* Builder.swift in Sources */,

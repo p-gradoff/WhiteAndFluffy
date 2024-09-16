@@ -5,7 +5,8 @@
 //  Created by Павел Градов on 15.09.2024.
 //
 
-import Foundation
+import UIKit
+import SDWebImage
 
 protocol InfoPresenterProtocol: AnyObject {
     func loadPresenter(with view: InfoViewProtocol, controller: InfoViewControllerProtocol)
@@ -24,9 +25,8 @@ final class InfoPresenter {
     
     private func setup() {
         setupHandlers()
-        setupInformationData()
+        loadData()
     }
-    
 }
 
 private extension InfoPresenter {
@@ -34,16 +34,28 @@ private extension InfoPresenter {
         
     }
     
-    private func setupInformationData() {
+    private func loadData() {
         networkManager.setupRequest(id: model.photoID)
-        networkManager.getRequest { result in
+        networkManager.getRequest { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
-            case .success(let success):
-                print("success")
-            case .failure(let failure):
-                print("failure")
+            case .success(let data):
+                setupView(with: data)
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
+    }
+    
+    private func setupView(with infoModel: InfoModel) {
+        view?.imageView.sd_setImage(with: model.fullPhotoURL, completed: { [weak self] _, error, _, _ in
+            // TODO: error handling
+            guard let self = self else { return }
+            view?.activateConstraints()
+        })
+            
+        
     }
 }
 

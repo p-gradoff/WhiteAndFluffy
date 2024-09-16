@@ -26,7 +26,7 @@ final class FavoriteView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setUpView() {
+    private func setupView() {
         addSubview(canvasView)
         activateConstraints()
     }

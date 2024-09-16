@@ -9,11 +9,12 @@ import Alamofire
 
 final class NetworkService {
     var parameters : Parameters = [String: Any]()
+    var host = String.host
     
     func setupRequest(id: String) {
+        host.append(contentsOf: "\(id)/")
         self.parameters = [
-            "id": id,
-            "client_id": Token.accessKey.rawValue
+            "client_id": Token.accessKey.rawValue,
         ]
     }
     
@@ -21,7 +22,7 @@ final class NetworkService {
         // guard let photoUrl = url else { return }
         
         // TODO: errors handling
-        AF.request(String.host, method: .get, parameters: parameters).response { response in
+        AF.request(host, method: .get, parameters: parameters).response { response in
             guard response.error == nil else {
                 print(response.error!.localizedDescription)
                 return
@@ -36,7 +37,6 @@ final class NetworkService {
                 let data = try JSONDecoder().decode(InfoModel.self, from: jsonData)
                 completion(.success(data))
             } catch {
-                print("Something went wrong with decoding")
                 completion(.failure(error))
                 return
             }
