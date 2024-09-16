@@ -40,7 +40,7 @@ final class Builder {
     }
     
     static func buildInformationViewController(photo: UnsplashPhoto) -> UIViewController {
-        let model = InfoModel(photo: photo)
+        let model = PhotoInfoModel(photo: photo)
         let presenter = InfoPresenter(model: model)
         let controller = InfoViewController(dependencies: .init(presenter: presenter))
         

@@ -16,8 +16,8 @@ final class UnsplashViewController: UIViewController {
     private let presenter: UnsplashPresenterProtocol
     
     private let config = UnsplashPhotoPickerConfiguration(
-        accessKey: .accessKey,
-        secretKey: .secretKey
+        accessKey: Token.accessKey.rawValue,
+        secretKey: Token.secretKey.rawValue
     )
     
     private lazy var photoPicker: UnsplashPhotoPicker = {
@@ -57,6 +57,7 @@ final class UnsplashViewController: UIViewController {
 
 extension UnsplashViewController: UnsplashPhotoPickerDelegate {
     func unsplashPhotoPicker(_ photoPicker: UnsplashPhotoPicker, didSelectPhotos photos: [UnsplashPhoto]) {
+        print(photos.first!.identifier)
         presenter.setupInformationScreen(with: photos.first!)
     }
     
@@ -69,11 +70,6 @@ extension UnsplashViewController: UnsplashViewControllerProtocol {
     func pushViewController(_ targetController: UIViewController) {
         navigationController?.pushViewController(targetController, animated: false)
     }
-}
-
-extension String {
-    static let accessKey = "baCvunmA2XzfsRavdVIzhghHURCbr4V073wovijPK-I"
-    static let secretKey = "NJToujRMGpku0kZEoEVnSY5LHBHvljwcN9ykix_0Yv0"
 }
 
 

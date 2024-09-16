@@ -5,4 +5,5 @@ use_frameworks!
 target 'WhiteAndFluffy' do
 	pod 'Alamofire'
 	pod 'UnsplashPhotoPicker', '~> 1.3'
+	pod 'SDWebImage'
 end
