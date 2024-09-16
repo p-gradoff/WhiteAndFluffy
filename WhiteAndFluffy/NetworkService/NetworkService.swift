@@ -9,9 +9,10 @@ import Alamofire
 
 final class NetworkService {
     var parameters : Parameters = [String: Any]()
-    var host = String.host
+    var host: String = String()
     
     func setupRequest(id: String) {
+        host = String.host
         host.append(contentsOf: "\(id)/")
         self.parameters = [
             "client_id": Token.accessKey.rawValue,
@@ -45,8 +46,8 @@ final class NetworkService {
 }
 
 enum Token: String {
-    case accessKey = "baCvunmA2XzfsRavdVIzhghHURCbr4V073wovijPK-I"
-    case secretKey = "NJToujRMGpku0kZEoEVnSY5LHBHvljwcN9ykix_0Yv0"
+    case accessKey = "8lNBOTJy09vapQMwGzCVYY7CgVVwSxRGREoMoKuG1Yc"
+    case secretKey = "GGgvf6S80TFBpuU3m8bwJOJmMb52KAbgbsDDMzoflM8"
 }
 
 extension String {

@@ -28,11 +28,6 @@ final class InfoPresenter {
         
         favoritePresenter.setupInfoPresenter(self)
     }
-    
-    private func setup() {
-        setupHandlers()
-        loadData()
-    }
 }
 
 private extension InfoPresenter {
@@ -95,7 +90,7 @@ private extension InfoPresenter {
                 location: infoModel.user?.location,
                 downloadsCount: String(infoModel.downloads ?? 0)
             )
-            
+            self.model = data
             view?.setupInformation(from: data)
         })
     }
@@ -106,12 +101,12 @@ extension InfoPresenter: InfoPresenterProtocol {
         self.view = view
         self.controller = controller
         
-        self.setup()
+        setupHandlers()
     }
     
     func setupPhotoInformation(model: PhotoInfoModel) {
         self.model = model
-        setup()
+        loadData()
     }
     
     func loadLikedPhotoInfo(by data: PhotoInfoModel) {

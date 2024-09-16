@@ -65,18 +65,15 @@ final class InfoView: UIView {
     }(UIView())
 
     private var creationDateLabel: UILabel = AppUICreator.createLabel(
-        with: .systemFont(ofSize: 18, weight: .thin),
-        text: "\(String.middlePoint) Creation date: "
+        with: .systemFont(ofSize: 18, weight: .thin)
     )
     
     private var locationLabel: UILabel = AppUICreator.createLabel(
-        with: .systemFont(ofSize: 18, weight: .thin),
-        text: "\(String.middlePoint) Location: "
+        with: .systemFont(ofSize: 18, weight: .thin)
     )
     
     private var downloadsLabel: UILabel = AppUICreator.createLabel(
-        with: .systemFont(ofSize: 18, weight: .thin),
-        text: "\(String.middlePoint) Downloads count: "
+        with: .systemFont(ofSize: 18, weight: .thin)
     )
     
     private lazy var infoStackView: UIStackView = {
@@ -136,10 +133,11 @@ extension InfoView: InfoViewProtocol {
     }
     
     func setupInformation(from model: PhotoInfoModel) {
+        
         usernameLabel.text = model.username
-        creationDateLabel.text?.append(model.creationDate ?? DefaultValues.creationDate.rawValue)
-        locationLabel.text?.append(model.location ?? DefaultValues.location.rawValue)
-        downloadsLabel.text?.append(model.downloadsCount ?? DefaultValues.downloadsCount.rawValue)
+        creationDateLabel.text = "\(String.middlePoint) Creation date: \(model.creationDate ?? DefaultValues.creationDate.rawValue)"
+        locationLabel.text =  "\(String.middlePoint) Location: \(model.location ?? DefaultValues.location.rawValue)"
+        downloadsLabel.text = "\(String.middlePoint) Downloads count: \(model.downloadsCount ?? DefaultValues.downloadsCount.rawValue)"
     }
 }
 
