@@ -32,6 +32,7 @@
 		375709D52C97017C002E5F6B /* InfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375709D42C97017C002E5F6B /* InfoPresenter.swift */; };
 		375709D82C9701EB002E5F6B /* PhotoInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375709D72C9701EB002E5F6B /* PhotoInfoModel.swift */; };
 		375709DE2C975115002E5F6B /* InfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375709DD2C975115002E5F6B /* InfoModel.swift */; };
+		376EE7FF2C98743D00B35197 /* UIViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376EE7FE2C98743D00B35197 /* UIViewControllerProtocol.swift */; };
 		901B0F00C9493721FE590E3B /* Pods_WhiteAndFluffy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EDE8560DBFC6E82A58A58A /* Pods_WhiteAndFluffy.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		375709D42C97017C002E5F6B /* InfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPresenter.swift; sourceTree = "<group>"; };
 		375709D72C9701EB002E5F6B /* PhotoInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInfoModel.swift; sourceTree = "<group>"; };
 		375709DD2C975115002E5F6B /* InfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoModel.swift; sourceTree = "<group>"; };
+		376EE7FE2C98743D00B35197 /* UIViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerProtocol.swift; sourceTree = "<group>"; };
 		4CDB25494AAA6FCD2F5DAA9F /* Pods-WhiteAndFluffy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhiteAndFluffy.release.xcconfig"; path = "Target Support Files/Pods-WhiteAndFluffy/Pods-WhiteAndFluffy.release.xcconfig"; sourceTree = "<group>"; };
 		82DB31CF568698A875627267 /* Pods-WhiteAndFluffy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhiteAndFluffy.debug.xcconfig"; path = "Target Support Files/Pods-WhiteAndFluffy/Pods-WhiteAndFluffy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,6 +123,7 @@
 				372F677E2C96C928001786CE /* Builder.swift */,
 				372F67752C96C72A001786CE /* Screens */,
 				3724E9B32C98276E00618D8E /* AppUICreator.swift */,
+				376EE7FD2C98742B00B35197 /* Protocol */,
 				372F67942C96DC38001786CE /* NetworkService */,
 				3724E9B72C9827F100618D8E /* Fonts */,
 				372F67882C96CE47001786CE /* Extension */,
@@ -257,6 +260,14 @@
 				375709C92C96FCDA002E5F6B /* UnsplashPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		376EE7FD2C98742B00B35197 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				376EE7FE2C98743D00B35197 /* UIViewControllerProtocol.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		53E89E03219ACFDA5EC16722 /* Pods */ = {
@@ -404,6 +415,7 @@
 				375709D02C96FED8002E5F6B /* InfoViewController.swift in Sources */,
 				372F67962C96DF8A001786CE /* NetworkService.swift in Sources */,
 				3724E9C12C985AD300618D8E /* FavoriteTableViewCell.swift in Sources */,
+				376EE7FF2C98743D00B35197 /* UIViewControllerProtocol.swift in Sources */,
 				3724E9B92C98281E00618D8E /* UIFont.ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

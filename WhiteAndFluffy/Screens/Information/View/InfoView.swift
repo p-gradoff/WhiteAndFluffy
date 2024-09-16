@@ -13,7 +13,7 @@ protocol InfoViewProtocol: UIView {
     var likePhoto: ((Bool) -> Void)? { get set }
     
     func activateConstraints()
-    func setupInformation(username: String, creationDate: String, location: String, downloadsCount: String)
+    func setupInformation(from model:PhotoInfoModel)
 }
 
 final class InfoView: UIView {
@@ -135,11 +135,11 @@ extension InfoView: InfoViewProtocol {
         ])
     }
     
-    func setupInformation(username: String, creationDate: String, location: String, downloadsCount: String) {
-        usernameLabel.text = username
-        creationDateLabel.text?.append(creationDate)
-        locationLabel.text?.append(location)
-        downloadsLabel.text?.append(downloadsCount)
+    func setupInformation(from model: PhotoInfoModel) {
+        usernameLabel.text = model.username
+        creationDateLabel.text?.append(model.creationDate ?? DefaultValues.creationDate.rawValue)
+        locationLabel.text?.append(model.location ?? DefaultValues.location.rawValue)
+        downloadsLabel.text?.append(model.downloadsCount ?? DefaultValues.downloadsCount.rawValue)
     }
 }
 

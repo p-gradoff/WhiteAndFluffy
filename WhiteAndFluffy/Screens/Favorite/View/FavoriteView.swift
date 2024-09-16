@@ -8,14 +8,14 @@
 import UIKit
 
 protocol FavoriteViewProtocol: UIView {
-    func updateCellData(with data: [FavoriteInfoModel])
+    func updateCellData(with data: [PhotoInfoModel])
     func setupFavoritePresenter(_ presenter: FavoritePresenterDelegate)
 }
 
 final class FavoriteView: UIView {
     private weak var favoritePresenter: FavoritePresenterDelegate?
 
-    private var cellData: [FavoriteInfoModel] = []
+    private var cellData: [PhotoInfoModel] = []
     
     private lazy var tableView: UITableView = {
         $0.bouncesVertically = false
@@ -44,7 +44,7 @@ extension FavoriteView: FavoriteViewProtocol {
         self.favoritePresenter = presenter
     }
     
-    func updateCellData(with data: [FavoriteInfoModel]) {
+    func updateCellData(with data: [PhotoInfoModel]) {
         cellData = data
         tableView.reloadData()
     }
@@ -59,8 +59,8 @@ extension FavoriteView: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteTableViewCell.reuseID, for: indexPath) as? FavoriteTableViewCell else { return UITableViewCell() }
         
         cell.setupCell(
-            with: cellData[indexPath.row].photo,
-            text: cellData[indexPath.row].username
+            with: cellData[indexPath.row].photo!,
+            text: cellData[indexPath.row].username!
         )
         
         return cell
@@ -71,12 +71,8 @@ extension FavoriteView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { 30 }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //
+        favoritePresenter?.transmitInformation(cellData[indexPath.row])
     }
-    
-    
-    
-    
 }
 
 extension FavoriteView: UITableViewDelegate {

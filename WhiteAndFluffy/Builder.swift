@@ -12,8 +12,9 @@ final class Builder {
     // MARK: мб поменять название на конфигурацию всего проекта
     static func buildTabBar() -> UITabBarController {
         let favoritePresenter = buildFavoritePresenter()
+        let infoPresenter = buildInformationViewController(favoritePresenter: favoritePresenter)
         
-        let unsplashViewController = buildUnsplashViewController(using: favoritePresenter)
+        let unsplashViewController = buildUnsplashViewController(using: infoPresenter)
         unsplashViewController.tabBarItem = UITabBarItem(title: "Unsplash", image: UIImage(systemName: "photo.fill"), tag: 0)
         
         let favoriteViewController = buildFavoriteViewController(using: favoritePresenter)
@@ -38,20 +39,18 @@ final class Builder {
             return controller
         }
         
-        func buildUnsplashViewController(using presenter: FavoritePresenterProtocol) -> UINavigationController {
+        func buildInformationViewController(favoritePresenter: FavoritePresenterProtocol) -> InfoPresenterProtocol {
+            let presenter = InfoPresenter(favoritePresenter: favoritePresenter)
+            presenter.controller = InfoViewController(dependencies: .init(presenter: presenter))
+            return presenter
+        }
+        
+        func buildUnsplashViewController(using presenter: InfoPresenterProtocol) -> UINavigationController {
             let presenter = UnsplashPresenter(presenter)
             let unsplashVC = UnsplashViewController(dependencies: .init(presenter: presenter))
             let controller = UINavigationController(rootViewController: unsplashVC)
             
             return controller
         }
-    }
-    
-    static func buildInformationViewController(photoID: String, photoURL: URL?, favoritePresenter: FavoritePresenterProtocol) -> UIViewController {
-        let model = PhotoInfoModel(photoID: photoID, photoURL: photoURL)
-        let presenter = InfoPresenter(model: model, favoritePresenter: favoritePresenter)
-        let controller = InfoViewController(dependencies: .init(presenter: presenter))
-        
-        return controller
     }
 }

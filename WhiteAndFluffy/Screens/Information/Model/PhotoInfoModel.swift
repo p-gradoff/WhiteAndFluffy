@@ -8,11 +8,28 @@
 import UnsplashPhotoPicker
 
 struct PhotoInfoModel {
-    let photoID: String
+    let id: String
+    let photo: UIImage?
     let photoURL: URL?
+    let username: String?
+    let creationDate: String?
+    let location: String?
+    let downloadsCount: String?
     
-    init(photoID: String, photoURL: URL?) {
-        self.photoID = photoID
+    init(id: String, photo: UIImage? = nil, photoURL: URL?, username: String? = nil, creationDate: String? = nil, location: String? = nil, downloadsCount: String? = nil) {
+        self.id = id
+        self.photo = photo
         self.photoURL = photoURL
+        self.username = username
+        self.creationDate = creationDate
+        self.location = location
+        self.downloadsCount = downloadsCount
     }
+}
+
+enum DefaultValues: String {
+    case username = "user"
+    case creationDate = "1970-01-01"
+    case location = "Moscow"
+    case downloadsCount = "0"
 }

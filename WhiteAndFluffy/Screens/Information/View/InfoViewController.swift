@@ -7,13 +7,10 @@
 
 import UIKit
 
-protocol InfoViewControllerProtocol: AnyObject {
-    
-}
-
-final class InfoViewController: UIViewController {
-    private let presenter: InfoPresenterProtocol
+final class InfoViewController: UIViewController, UIViewControllerProtocol {
+    private weak var presenter: InfoPresenterProtocol?
     private let infoView: InfoViewProtocol
+    internal var id: String = UUID().uuidString
 
     struct Dependencies {
         let presenter: InfoPresenterProtocol
@@ -22,7 +19,12 @@ final class InfoViewController: UIViewController {
     init(dependencies: Dependencies) {
         self.infoView = InfoView(frame: UIScreen.main.bounds)
         self.presenter = dependencies.presenter
+        print("initialize infoVC \(id)")
         super.init(nibName: nil, bundle: nil)
+    }
+    
+    deinit {
+        print("deinit \(id)")
     }
     
     required init?(coder: NSCoder) {
@@ -31,15 +33,11 @@ final class InfoViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        presenter.loadPresenter(with: infoView, controller: self)
+        presenter?.loadPresenter(with: infoView, controller: self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(infoView)
     }
-}
-
-extension InfoViewController: InfoViewControllerProtocol {
-    
 }

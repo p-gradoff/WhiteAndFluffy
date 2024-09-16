@@ -8,28 +8,21 @@
 import UIKit
 
 protocol FavoriteModelProtocol: AnyObject {
-    var getPhotosData: [FavoriteInfoModel] { get }
-    func addPhoto(by model: FavoriteInfoModel)
+    var getPhotosData: [PhotoInfoModel] { get }
+    func addPhoto(by model: PhotoInfoModel)
     func removePhoto(by id: String)
 }
 
 final class FavoriteModel {
-    private var favorites: [String: FavoriteInfoModel] = [:]
-}
-
-struct FavoriteInfoModel {
-    let id: String
-    let photo: UIImage
-    let photoURL: URL?
-    let username: String
+    private var favorites: [String: PhotoInfoModel] = [:]
 }
 
 extension FavoriteModel: FavoriteModelProtocol {
-    var getPhotosData: [FavoriteInfoModel] {
+    var getPhotosData: [PhotoInfoModel] {
         get { Array(favorites.values) }
     }
     
-    func addPhoto(by model: FavoriteInfoModel) {
+    func addPhoto(by model: PhotoInfoModel) {
         favorites[model.id] = model
     }
     

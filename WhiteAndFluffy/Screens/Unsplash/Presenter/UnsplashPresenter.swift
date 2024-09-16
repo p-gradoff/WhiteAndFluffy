@@ -8,30 +8,28 @@
 import UnsplashPhotoPicker
 
 protocol UnsplashPresenterProtocol: AnyObject {
-    func loadPresenter(controller: UnsplashViewControllerProtocol)
+    func loadPresenter(controller: UIViewControllerProtocol)
     func setupInformationScreen(with info: UnsplashPhoto)
 }
 
 final class UnsplashPresenter {
-    private weak var controller: UnsplashViewControllerProtocol?
-    private var favoritePresenter: FavoritePresenterProtocol
+    private weak var controller: UIViewControllerProtocol?
+    private var infoPresenter: InfoPresenterProtocol
     
-    init(_ favPresenter: FavoritePresenterProtocol) {
-        self.favoritePresenter = favPresenter
+    init(_ infoPresenter: InfoPresenterProtocol) {
+        self.infoPresenter = infoPresenter
     }
 }
 
 extension UnsplashPresenter: UnsplashPresenterProtocol {
-    func loadPresenter(controller: UnsplashViewControllerProtocol) {
+    func loadPresenter(controller: UIViewControllerProtocol) {
         self.controller = controller
     }
     
     func setupInformationScreen(with photo: UnsplashPhoto) {
-        let infoViewController = Builder.buildInformationViewController(
-            photoID: photo.identifier,
-            photoURL: photo.urls[.regular],
-            favoritePresenter: self.favoritePresenter
-        )
-        controller?.pushViewController(infoViewController)
+        let photoInfoModel = PhotoInfoModel(id: photo.identifier, photoURL: photo.urls[.regular])
+        infoPresenter.setupPhotoInformation(model: photoInfoModel)
+        
+        controller?.pushViewController(infoPresenter.controller!)
     }
 }

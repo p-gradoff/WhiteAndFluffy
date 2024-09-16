@@ -7,11 +7,7 @@
 
 import UIKit
 
-protocol FavoriteViewControllerProtocol: AnyObject {
-    
-}
-
-final class FavoriteViewController: UIViewController {
+final class FavoriteViewController: UIViewController, UIViewControllerProtocol {
     private let favouriteView: FavoriteViewProtocol
     private let presenter: FavoritePresenterDelegate
     
@@ -38,8 +34,4 @@ final class FavoriteViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(favouriteView)
     }
-}
-
-extension FavoriteViewController: FavoriteViewControllerProtocol {
-    
 }

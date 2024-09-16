@@ -8,11 +8,7 @@
 import UnsplashPhotoPicker
 import UIKit
 
-protocol UnsplashViewControllerProtocol: AnyObject {
-    func pushViewController(_ targetController: UIViewController)
-}
-
-final class UnsplashViewController: UIViewController {
+final class UnsplashViewController: UIViewController, UIViewControllerProtocol {
     private let presenter: UnsplashPresenterProtocol
     
     private let config = UnsplashPhotoPickerConfiguration(
@@ -57,18 +53,11 @@ final class UnsplashViewController: UIViewController {
 
 extension UnsplashViewController: UnsplashPhotoPickerDelegate {
     func unsplashPhotoPicker(_ photoPicker: UnsplashPhotoPicker, didSelectPhotos photos: [UnsplashPhoto]) {
-        print(photos.first!.identifier)
         presenter.setupInformationScreen(with: photos.first!)
     }
     
     func unsplashPhotoPickerDidCancel(_ photoPicker: UnsplashPhotoPicker) {
         //
-    }
-}
-
-extension UnsplashViewController: UnsplashViewControllerProtocol {
-    func pushViewController(_ targetController: UIViewController) {
-        navigationController?.pushViewController(targetController, animated: false)
     }
 }
 

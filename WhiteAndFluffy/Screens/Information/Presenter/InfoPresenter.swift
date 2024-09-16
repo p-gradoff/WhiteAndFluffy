@@ -9,19 +9,20 @@ import UIKit
 import SDWebImage
 
 protocol InfoPresenterProtocol: AnyObject {
-    func loadPresenter(with view: InfoViewProtocol, controller: InfoViewControllerProtocol)
-    // func loadLikedPhotoView()
+    func loadPresenter(with view: InfoViewProtocol, controller: UIViewControllerProtocol)
+    func loadLikedPhotoInfo(by data: PhotoInfoModel)
+    func setupPhotoInformation(model: PhotoInfoModel)
+    var controller: UIViewControllerProtocol? { get }
 }
 
 final class InfoPresenter {
     private let networkManager: NetworkService
-    private let model: PhotoInfoModel
+    private var model: PhotoInfoModel?
     private weak var favoritePresenter: FavoritePresenterProtocol?
     private weak var view: InfoViewProtocol?
-    private weak var controller: InfoViewControllerProtocol?
+    var controller: UIViewControllerProtocol?
     
-    init(model: PhotoInfoModel, favoritePresenter: FavoritePresenterProtocol) {
-        self.model = model
+    init(favoritePresenter: FavoritePresenterProtocol) {
         self.networkManager = NetworkService()
         self.favoritePresenter = favoritePresenter
         
@@ -44,22 +45,27 @@ private extension InfoPresenter {
     }
     
     private func onLikePhotoTouched(isLiked: Bool) {
+        guard let model = model else { return }
         switch isLiked {
         case true:
-            let data = FavoriteInfoModel(
-                id: model.photoID,
+            let data = PhotoInfoModel(
+                id: model.id,
                 photo: view!.imageView.image!,
                 photoURL: model.photoURL,
-                username: view!.usernameLabel.text ?? ""
+                username: view!.usernameLabel.text ?? DefaultValues.username.rawValue,
+                creationDate: model.creationDate ?? DefaultValues.creationDate.rawValue,
+                location: model.location ?? DefaultValues.location.rawValue,
+                downloadsCount: model.downloadsCount ?? DefaultValues.downloadsCount.rawValue
             )
             favoritePresenter?.updateData(data)
         case false:
-            favoritePresenter?.removeData(model.photoID)
+            favoritePresenter?.removeData(model.id)
         }
     }
     
     private func loadData() {
-        networkManager.setupRequest(id: model.photoID)
+        guard let model = model else { return }
+        networkManager.setupRequest(id: model.id)
         networkManager.getRequest { [weak self] result in
             guard let self = self else { return }
             
@@ -73,27 +79,42 @@ private extension InfoPresenter {
     }
     
     private func setupView(with infoModel: InfoModel) {
+        guard let model = model else { return }
         view?.imageView.sd_setImage(with: model.photoURL, completed: { [weak self] _, error, _, _ in
             // TODO: error handling
             guard let self = self else { return }
             view?.activateConstraints()
             
             let creationDate = infoModel.createdAt?.getDate()
-            view?.setupInformation(
-                username: infoModel.user?.name ?? "Default name",
-                creationDate: creationDate ?? "1970-01-01",
-                location: infoModel.user?.location ?? "Moscow",
+            let data = PhotoInfoModel(
+                id: model.id,
+                photo: view?.imageView.image,
+                photoURL: model.photoURL,
+                username: infoModel.user?.name,
+                creationDate: creationDate,
+                location: infoModel.user?.location,
                 downloadsCount: String(infoModel.downloads ?? 0)
             )
+            
+            view?.setupInformation(from: data)
         })
     }
 }
 
 extension InfoPresenter: InfoPresenterProtocol {
-    func loadPresenter(with view: InfoViewProtocol, controller: InfoViewControllerProtocol) {
+    func loadPresenter(with view: InfoViewProtocol, controller: UIViewControllerProtocol) {
         self.view = view
         self.controller = controller
         
         self.setup()
+    }
+    
+    func setupPhotoInformation(model: PhotoInfoModel) {
+        self.model = model
+        setup()
+    }
+    
+    func loadLikedPhotoInfo(by data: PhotoInfoModel) {
+        view?.imageView.image = data.photo
     }
 }
