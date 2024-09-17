@@ -138,6 +138,7 @@ extension InfoPresenter: InfoPresenterProtocol {
     
     // MARK: - method for communitaion between favoritePresenter and infoPresenter. Photos that were added to favorites will not be re-uploaded. Their data has been saved
     func loadLikedPhotoInfo(by data: PhotoInfoModel) {
+        self.model = data
         view?.imageView.image = data.photo
         view?.setupInformation(from: data)
     }
